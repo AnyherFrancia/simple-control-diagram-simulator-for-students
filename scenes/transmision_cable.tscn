@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://olodsugir1wq"]
+
+[ext_resource type="Script" uid="uid://crycf1x78eef8" path="res://scripts/transmision_cable.gd" id="1_7tv32"]
+[ext_resource type="Texture2D" uid="uid://dc6vjm7prkc02" path="res://graficos/cable/Cable_de_transmisión.png" id="1_aa13i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tv32"]
+size = Vector2(32, 6)
+
+[node name="transmision_cable" type="Area2D" unique_id=126042542]
+script = ExtResource("1_7tv32")
+
+[node name="cable" type="Sprite2D" parent="." unique_id=2095909410]
+texture = ExtResource("1_aa13i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=665763372]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7tv32")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

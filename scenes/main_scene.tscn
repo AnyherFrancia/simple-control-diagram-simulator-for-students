@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bs7on1scmtmyk"]
+
+[ext_resource type="Script" uid="uid://dn0ak01mqsb0k" path="res://scripts/main_scene.gd" id="1_pu3yx"]
+[ext_resource type="Script" uid="uid://x0uphj4vgwfl" path="res://scripts/camera.gd" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://mxx6nuuj2yh" path="res://scenes/hud_up.tscn" id="2_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://bpl3f0g1iqeur" path="res://scenes/hud_bottom.tscn" id="3_pu3yx"]
+
+[node name="main_scene" type="Node2D" unique_id=1238407322]
+script = ExtResource("1_pu3yx")
+
+[node name="sub_windows" type="Node" parent="." unique_id=2114868962]
+
+[node name="background" type="ColorRect" parent="." unique_id=714438253]
+custom_minimum_size = Vector2(1200, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+
+[node name="camera" type="Camera2D" parent="." unique_id=724590824]
+position = Vector2(960, 540)
+limit_left = 0
+limit_top = 0
+limit_right = 2560
+limit_bottom = 1440
+position_smoothing_enabled = true
+script = ExtResource("1_w2twt")
+
+[node name="objects" type="Node2D" parent="." unique_id=2115624663]
+
+[node name="pipes" type="Node2D" parent="objects" unique_id=307800370]
+
+[node name="sources" type="Node2D" parent="objects" unique_id=747212344]
+
+[node name="cables" type="Node2D" parent="objects" unique_id=1739864490]
+
+[node name="controllers" type="Node2D" parent="objects" unique_id=370175106]
+
+[node name="others" type="Node2D" parent="objects" unique_id=1773835575]
+
+[node name="hud" type="CanvasLayer" parent="." unique_id=1684274718]
+
+[node name="hud_up" parent="hud" unique_id=358825454 instance=ExtResource("2_7ykc4")]
+anchors_preset = 10
+anchor_bottom = 0.0
+grow_vertical = 1
+mouse_filter = 1
+
+[node name="hud_bottom" parent="hud" unique_id=1727533427 instance=ExtResource("3_pu3yx")]
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -234.0
+grow_vertical = 0
+mouse_filter = 1

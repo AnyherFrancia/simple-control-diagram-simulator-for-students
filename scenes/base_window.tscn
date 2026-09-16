@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dxarqs474uxi"]
+
+[ext_resource type="Script" uid="uid://b3p5vic0wkxxk" path="res://scenes/base_window.gd" id="1_onvrl"]
+
+[node name="base_window" type="Window" unique_id=1772930038]
+oversampling_override = 1.0
+title = "Atributos"
+position = Vector2i(0, 36)
+size = Vector2i(572, 510)
+wrap_controls = true
+unresizable = true
+minimize_disabled = true
+maximize_disabled = true
+script = ExtResource("1_onvrl")
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
