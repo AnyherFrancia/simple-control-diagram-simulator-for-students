@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c3g254wq7o07m"]
+
+[ext_resource type="Script" uid="uid://cnmerfo2unf4j" path="res://scripts/cable.gd" id="1_j3i3n"]
+[ext_resource type="Texture2D" path="res://graficos/cable/Cable_de_transmisión.png" id="1_rj3a4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_j3i3n"]
+resource_local_to_scene = true
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mrtv2"]
+resource_local_to_scene = true
+
+[node name="cable" type="Area2D" unique_id=1968044253]
+script = ExtResource("1_j3i3n")
+
+[node name="line" type="Line2D" parent="." unique_id=499325256]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0, 0, 0)
+default_color = Color(0, 0, 0, 1)
+texture = ExtResource("1_rj3a4")
+texture_mode = 1
+
+[node name="segment1" type="CollisionShape2D" parent="." unique_id=1513235419]
+texture_filter = 1
+shape = SubResource("SegmentShape2D_j3i3n")
+
+[node name="segment2" type="CollisionShape2D" parent="." unique_id=1909276044]
+texture_filter = 1
+shape = SubResource("SegmentShape2D_mrtv2")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,0 +1,482 @@
+[gd_scene format=3 uid="uid://bbu433i7dxlnh"]
+
+[ext_resource type="Script" uid="uid://ddr6j13pomjc1" path="res://scripts/hud_bottom.gd" id="1_fbx71"]
+[ext_resource type="Texture2D" uid="uid://cukdegdn1mnxe" path="res://graficos/hud/let_see.png" id="1_s6oht"]
+[ext_resource type="Texture2D" uid="uid://6xatck0so6mv" path="res://graficos/hud/let_see_3.png" id="2_7jvvv"]
+[ext_resource type="Texture2D" uid="uid://blumhacp4eucd" path="res://graficos/hud/let_see_2.png" id="3_l2p7v"]
+[ext_resource type="Texture2D" uid="uid://d3rce8xddc4xw" path="res://graficos/tuberia/tuberia3.png" id="4_s1rnf"]
+[ext_resource type="Texture2D" uid="uid://blnr7xgtgwuvc" path="res://graficos/tanque/Tanque_default.png" id="5_l2p7v"]
+[ext_resource type="Texture2D" uid="uid://tak4osdi30eq" path="res://graficos/valvula/tuberia_ato_pieza_dos_agua_dos_0%.png" id="6_s1rnf"]
+[ext_resource type="Texture2D" uid="uid://dls3w3o7h7rr8" path="res://graficos/controladores/Medidor de Flujo.png" id="7_h3l1q"]
+[ext_resource type="Texture2D" uid="uid://bmxkvwkgacalj" path="res://graficos/cable/Cable_de_transmisión.png" id="8_xdk5i"]
+[ext_resource type="Texture2D" uid="uid://qmpy676a7072" path="res://graficos/tanque/Tanque_75_to_100.png" id="9_xdk5i"]
+[ext_resource type="Texture2D" uid="uid://daepasyamrc2c" path="res://graficos/valvula/tuberia_ato_pieza_dos_agua_dos_75%.png" id="10_p4svu"]
+[ext_resource type="Texture2D" uid="uid://dvilh0mta8m4x" path="res://graficos/controladores/Controlador.png" id="11_fbx71"]
+
+[node name="hud_bottom" type="Control" unique_id=1727533427]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fbx71")
+
+[node name="main_container" type="MarginContainer" parent="." unique_id=1081482425]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -234.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main_container" unique_id=1241289768]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="up_container" type="MarginContainer" parent="main_container/VBoxContainer" unique_id=1582960945]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="up_background" type="ColorRect" parent="main_container/VBoxContainer/up_container" unique_id=1287496337]
+layout_mode = 2
+color = Color(0.07058824, 0, 0.4392157, 1)
+
+[node name="timer_container" type="MarginContainer" parent="main_container/VBoxContainer/up_container" unique_id=993272079]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="timer" type="Label" parent="main_container/VBoxContainer/up_container/timer_container" unique_id=82704140]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "00:00"
+
+[node name="Timer" type="Timer" parent="main_container/VBoxContainer/up_container/timer_container" unique_id=1885391652]
+autostart = true
+
+[node name="bottom_container" type="MarginContainer" parent="main_container/VBoxContainer" unique_id=368468971]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.02
+
+[node name="bottom_background" type="ColorRect" parent="main_container/VBoxContainer/bottom_container" unique_id=811779767]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container" unique_id=1576123773]
+layout_mode = 2
+
+[node name="left_container" type="MarginContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=302713058]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="vertical_selectors" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container" unique_id=595174232]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors" unique_id=259522286]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="first_line" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors" unique_id=1171043100]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=841131522]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="pipe_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=683201486]
+texture_filter = 1
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="pipe_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/pipe_button" unique_id=1071232194]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -18.5
+offset_right = 28.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_s1rnf")
+region_rect = Rect2(0, 0, 32.11671, 15.78261)
+
+[node name="tank_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=910095133]
+texture_filter = 1
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="tank_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/tank_button" unique_id=1727506108]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -29.5
+offset_right = 26.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_l2p7v")
+region_rect = Rect2(0, 0, 64.28642, 63.59516)
+
+[node name="valve_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=664569351]
+texture_filter = 1
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="valve_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/valve_button" unique_id=230571740]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.5
+offset_top = -29.5
+offset_right = 25.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_s1rnf")
+region_rect = Rect2(0, 0, 10.897789, 13.693317)
+
+[node name="meter_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=667199993]
+texture_filter = 1
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="meter_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/meter_button" unique_id=320530290]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -30.5
+offset_right = 25.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_h3l1q")
+region_rect = Rect2(0, 0, 15.886564, 18.103687)
+
+[node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors" unique_id=590131852]
+layout_mode = 2
+
+[node name="second_line" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors" unique_id=1102790877]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line" unique_id=152270544]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="cable_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line" unique_id=260456294]
+texture_filter = 1
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="cable_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line/cable_button" unique_id=1431111157]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -21.5
+offset_right = 25.5
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_xdk5i")
+region_rect = Rect2(3.0206327, 0, 29.096077, 15.78261)
+
+[node name="first_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=1401375657]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="separator_color" type="ColorRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/first_separator" unique_id=2123121622]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0, 0.4392157, 1)
+
+[node name="center_container" type="MarginContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=557086349]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+
+[node name="vertical_pipes" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=529445169]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pipes" unique_id=1199608234]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="pipes" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pipes" unique_id=2144675490]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pipes/pipes" unique_id=1739006629]
+layout_mode = 2
+
+[node name="vertical_pipe_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pipes/pipes" unique_id=1289398790]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="pipe_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pipes/pipes/vertical_pipe_button" unique_id=1462966654]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -12.5
+offset_right = 24.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_s1rnf")
+region_rect = Rect2(32.11671, 15.787495, 32.05798, 15.83799)
+
+[node name="vertical_tanks" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=1353207972]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_tanks" unique_id=1380561647]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="tanks" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_tanks" unique_id=1964797771]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_tanks/tanks" unique_id=1529070275]
+layout_mode = 2
+
+[node name="vertical_tanks_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_tanks/tanks" unique_id=1197853095]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="tank_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_tanks/tanks/vertical_tanks_button" unique_id=2090137487]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -21.5
+offset_right = 20.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_xdk5i")
+region_rect = Rect2(-0.07207489, -0.036088943, 64.246765, 63.614662)
+
+[node name="vertical_valves" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=730894210]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_valves" unique_id=1452565113]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="valves" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_valves" unique_id=1272620515]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_valves/valves" unique_id=1004880853]
+layout_mode = 2
+
+[node name="vertical_valve_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_valves/valves" unique_id=1496577950]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="valve_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_valves/valves/vertical_valve_button" unique_id=1669521688]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -21.5
+offset_right = 20.5
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_p4svu")
+region_rect = Rect2(-0.07207489, -0.036088943, 11.033676, 13.723574)
+
+[node name="vertical_controllers" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=2147333732]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers" unique_id=2124601163]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="controllers" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers" unique_id=20754803]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers" unique_id=1034083016]
+layout_mode = 2
+
+[node name="vertical_meter_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers" unique_id=1024852937]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="meter_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/vertical_meter_button" unique_id=746468988]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -21.5
+offset_right = 13.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_h3l1q")
+region_rect = Rect2(2.009386, -0.036088943, 11.977488, 18.231733)
+
+[node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers" unique_id=439714391]
+layout_mode = 2
+
+[node name="slave_controller_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers" unique_id=310332706]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="slave_controller_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/slave_controller_button" unique_id=1704343789]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -21.5
+offset_right = 13.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_fbx71")
+region_rect = Rect2(1.9092007, -0.036088943, 14.086254, 20.182564)
+
+[node name="master_controller_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers" unique_id=479627515]
+texture_filter = 1
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="master_controller_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/master_controller_button" unique_id=622496338]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.75
+offset_top = -18.5
+offset_right = 19.75
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_fbx71")
+region_rect = Rect2(1.9092007, -0.036088943, 14.086254, 13.257023)
+
+[node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=906749618]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="separator_color" type="ColorRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/second_separator" unique_id=63499361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0, 0.4392157, 1)
+
+[connection signal="timeout" from="main_container/VBoxContainer/up_container/timer_container/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/pipe_button" to="." method="_on_pipe_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/tank_button" to="." method="_on_tank_button_pressed"]
+[connection signal="button_up" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/valve_button" to="." method="_on_valve_button_button_up"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/meter_button" to="." method="_on_meter_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line/cable_button" to="." method="_on_cable_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pipes/pipes/vertical_pipe_button" to="." method="_on_vertical_pipe_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_tanks/tanks/vertical_tanks_button" to="." method="_on_vertical_tanks_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_valves/valves/vertical_valve_button" to="." method="_on_vertical_valve_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/vertical_meter_button" to="." method="_on_vertical_meter_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/slave_controller_button" to="." method="_on_slave_controller_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/master_controller_button" to="." method="_on_master_controller_button_pressed"]

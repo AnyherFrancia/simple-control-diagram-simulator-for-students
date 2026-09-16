@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ctj5u5r06lk1d"]
+
+[ext_resource type="Texture2D" path="res://graficos/controladores/Medidor de Flujo.png" id="1_1ydcf"]
+[ext_resource type="Script" path="res://scripts/meter.gd" id="1_2qpkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpkh"]
+size = Vector2(12, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lr6xt"]
+size = Vector2(12, 12)
+
+[node name="meter" type="Area2D" unique_id=1760338551]
+script = ExtResource("1_2qpkh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=713625906]
+position = Vector2(-5.9604645e-08, 0)
+scale = Vector2(1.203125, 1.1666666)
+texture = ExtResource("1_1ydcf")
+
+[node name="down" type="CollisionShape2D" parent="." unique_id=1081700792]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_2qpkh")
+
+[node name="body" type="CollisionShape2D" parent="." unique_id=941757687]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_lr6xt")
+
+[node name="flujo" type="Label" parent="." unique_id=398771361]
+offset_left = -4.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 4.0
+theme_override_font_sizes/font_size = 1
+text = "Flujo: 0L
+"
+
+[node name="porcentaje" type="Label" parent="." unique_id=92814150]
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 5.0
+offset_bottom = 3.0
+theme_override_font_sizes/font_size = 1
+text = "Porcentaje:  0%"
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
