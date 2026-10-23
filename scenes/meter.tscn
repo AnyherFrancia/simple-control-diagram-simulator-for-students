@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctj5u5r06lk1d"]
 
-[ext_resource type="Texture2D" path="res://graficos/controladores/Medidor de Flujo.png" id="1_1ydcf"]
-[ext_resource type="Script" path="res://scripts/meter.gd" id="1_2qpkh"]
+[ext_resource type="Texture2D" uid="uid://dls3w3o7h7rr8" path="res://graficos/controladores/Medidor de Flujo.png" id="1_1ydcf"]
+[ext_resource type="Script" uid="uid://dp6ceuuren4mo" path="res://scripts/meter.gd" id="1_2qpkh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpkh"]
 size = Vector2(12, 6)
@@ -10,37 +10,53 @@ size = Vector2(12, 6)
 size = Vector2(12, 12)
 
 [node name="meter" type="Area2D" unique_id=1760338551]
+scale = Vector2(2, 2)
 script = ExtResource("1_2qpkh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=713625906]
+visibility_layer = 2
 position = Vector2(-5.9604645e-08, 0)
 scale = Vector2(1.203125, 1.1666666)
 texture = ExtResource("1_1ydcf")
 
 [node name="down" type="CollisionShape2D" parent="." unique_id=1081700792]
+visibility_layer = 2
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_2qpkh")
 
 [node name="body" type="CollisionShape2D" parent="." unique_id=941757687]
+visibility_layer = 2
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_lr6xt")
 
-[node name="flujo" type="Label" parent="." unique_id=398771361]
+[node name="controller" type="Label" parent="body" unique_id=561621172]
 offset_left = -4.0
 offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 4.0
-theme_override_font_sizes/font_size = 1
-text = "Flujo: 0L
+offset_right = 17.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 14
+text = "FT"
+metadata/_edit_use_anchors_ = true
+
+[node name="flujo" type="Label" parent="." unique_id=398771361]
+offset_left = -20.0
+offset_top = -7.0
+offset_right = 100.0
+offset_bottom = 52.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 20
+text = "Flujo: 0L/seg
 "
 
-[node name="porcentaje" type="Label" parent="." unique_id=92814150]
-offset_left = -4.0
-offset_top = -2.0
-offset_right = 5.0
-offset_bottom = 3.0
-theme_override_font_sizes/font_size = 1
-text = "Porcentaje:  0%"
+[node name="signal" type="Label" parent="." unique_id=1102763071]
+offset_left = -20.0
+offset_top = -5.0
+offset_right = 85.0
+offset_bottom = 28.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 20
+text = "Señal: 0%"
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]

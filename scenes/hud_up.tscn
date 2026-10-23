@@ -1,6 +1,27 @@
 [gd_scene format=3 uid="uid://c13vy3ayb15bm"]
 
-[ext_resource type="Script" path="res://scripts/hud_up.gd" id="1_06jjx"]
+[ext_resource type="Script" uid="uid://dqmfabpisq7yh" path="res://scripts/hud_up.gd" id="1_06jjx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06jjx"]
+bg_color = Color(0.07450981, 0.08235294, 0.16470589, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfw1s"]
+bg_color = Color(0.14509805, 0.6509804, 0.8745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l6s2"]
+bg_color = Color(0.31764707, 0.35686275, 0.627451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
 
 [node name="hud_up" type="Control" unique_id=358825454]
 layout_mode = 3
@@ -11,13 +32,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06jjx")
 
-[node name="background" type="ColorRect" parent="." unique_id=200566795]
+[node name="background" type="Panel" parent="." unique_id=1150818690]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 45.0
 grow_horizontal = 2
-color = Color(0.07058824, 0, 0.4392157, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_06jjx")
 
 [node name="horizontal_container" type="HBoxContainer" parent="background" unique_id=1983104859]
 layout_mode = 1
@@ -35,10 +56,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 
+[node name="background" type="Panel" parent="background/horizontal_container/position_container" unique_id=2060271118]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gfw1s")
+
 [node name="position_text" type="Label" parent="background/horizontal_container/position_container" unique_id=294114390]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5931336, 0.59313357, 0.59313357, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "x.0 , y.0"
 
 [node name="separator2" type="Control" parent="background/horizontal_container" unique_id=796676667]
@@ -49,8 +76,14 @@ layout_mode = 2
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
+[node name="background" type="Panel" parent="background/horizontal_container/zoom_container" unique_id=296471481]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_3l6s2")
+
 [node name="zoom_text" type="Label" parent="background/horizontal_container/zoom_container" unique_id=1474377314]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5921569, 0.5921569, 0.5921569, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Zoom: (0,0)"

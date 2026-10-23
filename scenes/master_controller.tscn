@@ -7,9 +7,11 @@
 size = Vector2(16, 15)
 
 [node name="master_controller" type="Area2D" unique_id=863264217]
+scale = Vector2(2, 2)
 script = ExtResource("1_alnru")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=525174735]
+visibility_layer = 2
 position = Vector2(0, -4)
 scale = Vector2(1.2777778, 1.35)
 texture = ExtResource("2_alnru")
@@ -17,24 +19,48 @@ region_enabled = true
 region_rect = Rect2(2.0266914, 0, 13.958809, 13.620902)
 
 [node name="body" type="CollisionShape2D" parent="." unique_id=1517298744]
+visibility_layer = 2
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_alnru")
 
-[node name="flujo" type="Label" parent="." unique_id=353486844]
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 13.0
-theme_override_font_sizes/font_size = 1
-text = "Flujo: 0L"
+[node name="in" type="Label" parent="." unique_id=353486844]
+offset_left = -21.000002
+offset_top = -10.0
+offset_right = 95.0
+offset_bottom = 18.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 20
+text = "Entrada: 0%"
 metadata/_edit_use_anchors_ = true
 
-[node name="porcentaje" type="Label" parent="." unique_id=1511925582]
-offset_left = -4.0
-offset_top = -5.0
-offset_right = 2.0
-offset_bottom = 1.0
-theme_override_font_sizes/font_size = 1
-text = "Porcentaje: 0%"
+[node name="mode" type="Label" parent="." unique_id=1511925582]
+offset_left = -21.5
+offset_top = -7.5
+offset_right = 93.5
+offset_bottom = 20.5
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 20
+text = "Modo: Dir"
+metadata/_edit_use_anchors_ = true
+
+[node name="out" type="Label" parent="." unique_id=1155919653]
+offset_left = -21.5
+offset_top = -3.9999995
+offset_right = 93.5
+offset_bottom = 24.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 20
+text = "Salida: 0%"
+metadata/_edit_use_anchors_ = true
+
+[node name="controller" type="Label" parent="." unique_id=415734290]
+offset_left = -4.5
+offset_top = -10.5
+offset_right = 16.5
+offset_bottom = 17.5
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 15
+text = "FC"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

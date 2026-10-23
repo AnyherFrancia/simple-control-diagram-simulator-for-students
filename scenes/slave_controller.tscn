@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyh04g7rg7bfv"]
 
-[ext_resource type="Texture2D" path="res://graficos/controladores/Controlador.png" id="1_60fnl"]
-[ext_resource type="Script" path="res://scripts/slave_controller.gd" id="1_eq701"]
+[ext_resource type="Texture2D" uid="uid://dvilh0mta8m4x" path="res://graficos/controladores/Controlador.png" id="1_60fnl"]
+[ext_resource type="Script" uid="uid://bhpq78rskrqe3" path="res://scripts/slave_controller.gd" id="1_eq701"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eq701"]
 size = Vector2(4, 9)
@@ -14,39 +14,84 @@ scale = Vector2(2, 2)
 script = ExtResource("1_eq701")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=581911592]
+visibility_layer = 2
 texture_filter = 1
 scale = Vector2(1.2777778, 1.35)
 texture = ExtResource("1_60fnl")
 
 [node name="down" type="CollisionShape2D" parent="." unique_id=1956026962]
+visibility_layer = 2
 position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_eq701")
 
 [node name="body" type="CollisionShape2D" parent="." unique_id=1414897929]
+visibility_layer = 2
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_um401")
 
-[node name="flujo" type="Label" parent="." unique_id=291232452]
-texture_filter = 1
-offset_left = -5.0
-offset_top = -8.5
-offset_right = 59.0
-offset_bottom = 14.5
-scale = Vector2(0.1, 0.1)
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 16
-text = "Set Point: 0L"
+[node name="controller" type="Label" parent="body" unique_id=45569548]
+offset_left = -4.5
+offset_top = -6.5
+offset_right = 16.5
+offset_bottom = 21.5
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 15
+text = "FC"
 metadata/_edit_use_anchors_ = true
 
 [node name="porcentaje" type="Label" parent="." unique_id=1578490530]
 texture_filter = 1
-offset_left = -5.0
-offset_top = -3.5
-offset_right = 89.0
+offset_left = -21.0
+offset_top = -6.0
+offset_right = 84.0
+offset_bottom = 21.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 19
+text = "Valvula: 0%"
+metadata/_edit_use_anchors_ = true
+
+[node name="nivel_1" type="Label" parent="." unique_id=496208400]
+texture_filter = 1
+offset_left = -21.5
+offset_top = -12.5
+offset_right = 91.5
 offset_bottom = 14.5
 scale = Vector2(0.1, 0.1)
-theme_override_font_sizes/font_size = 13
-text = "Porcentaje: 0%"
+theme_override_font_sizes/font_size = 19
+text = "Nivel #1: 0%"
+metadata/_edit_use_anchors_ = true
+
+[node name="nivel_2" type="Label" parent="." unique_id=1537651838]
+texture_filter = 1
+offset_left = -21.0
+offset_top = -10.0
+offset_right = 92.0
+offset_bottom = 17.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 19
+text = "Nivel #2: 0%"
+metadata/_edit_use_anchors_ = true
+
+[node name="nivel_3" type="Label" parent="." unique_id=252553136]
+texture_filter = 1
+offset_left = -21.0
+offset_top = -8.0
+offset_right = 92.0
+offset_bottom = 19.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 19
+text = "Nivel #3: 0%"
+metadata/_edit_use_anchors_ = true
+
+[node name="mode" type="Label" parent="." unique_id=1892890081]
+texture_filter = 1
+offset_left = -21.0
+offset_top = -3.0
+offset_right = 73.0
+offset_bottom = 24.0
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 19
+text = "Modo: Dir"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

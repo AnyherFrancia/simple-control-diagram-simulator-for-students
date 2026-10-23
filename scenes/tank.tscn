@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dv44k6s8stgy3"]
 
-[ext_resource type="Texture2D" path="res://graficos/tanque/Tanque_100.png" id="1_1ixom"]
-[ext_resource type="Script" path="res://scripts/tank.gd" id="1_5dv58"]
-[ext_resource type="Texture2D" path="res://graficos/tanque/Tanque_75_to_100.png" id="2_5dv58"]
-[ext_resource type="Texture2D" path="res://graficos/tanque/Tanque_0_to_25.png" id="3_gpf2y"]
-[ext_resource type="Texture2D" path="res://graficos/tanque/Tanque_25_to_50.png" id="4_dsgy6"]
-[ext_resource type="Texture2D" path="res://graficos/tanque/Tanque_50_to_75.png" id="5_6vu8p"]
-[ext_resource type="Texture2D" path="res://graficos/tanque/Tanque_default.png" id="6_w2kvd"]
+[ext_resource type="Texture2D" uid="uid://0yih452v3ib2" path="res://graficos/tanque/Tanque_100.png" id="1_1ixom"]
+[ext_resource type="Script" uid="uid://dlnwmt10d0j7l" path="res://scripts/tank.gd" id="1_5dv58"]
+[ext_resource type="Texture2D" uid="uid://qmpy676a7072" path="res://graficos/tanque/Tanque_75_to_100.png" id="2_5dv58"]
+[ext_resource type="Texture2D" uid="uid://ckum8uyr1oiki" path="res://graficos/tanque/Tanque_0_to_25.png" id="3_gpf2y"]
+[ext_resource type="Texture2D" uid="uid://bvogdy11cy0vs" path="res://graficos/tanque/Tanque_25_to_50.png" id="4_dsgy6"]
+[ext_resource type="Texture2D" uid="uid://bfi0gmx8aeu0i" path="res://graficos/tanque/Tanque_50_to_75.png" id="5_6vu8p"]
+[ext_resource type="Texture2D" uid="uid://blnr7xgtgwuvc" path="res://graficos/tanque/Tanque_default.png" id="6_w2kvd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2slht"]
 atlas = ExtResource("1_1ixom")
@@ -208,6 +208,7 @@ size = Vector2(42, 27)
 size = Vector2(68, 87)
 
 [node name="tank" type="Area2D" unique_id=1484698996]
+visibility_layer = 2
 script = ExtResource("1_5dv58")
 
 [node name="Tanque" type="AnimatedSprite2D" parent="." unique_id=1186615413]

@@ -2,7 +2,7 @@ extends Control
 var cable: PackedScene = preload("res://scenes/transmision_cable.tscn")
 var tuberia: PackedScene = preload("res://scenes/pipe.tscn")
 var tanque: PackedScene = preload("res://scenes/tank.tscn")
-#var atc : PackedScene = preload("res://tuberia_ato.tscn")
+var valve : PackedScene = preload("res://scenes/valve.tscn")
 var controlador_de_flujo: PackedScene = preload("res://scenes/master_controller.tscn")
 var medidor: PackedScene = preload("res://scenes/meter.tscn")
 var controlador_esclavo: PackedScene = preload("res://scenes/slave_controller.tscn")
@@ -67,11 +67,10 @@ func _on_vertical_tanks_button_pressed() -> void:
 	tanque_nuevo.position = position_a
 
 func _on_vertical_valve_button_pressed() -> void:
-	#position_a = $/root/main_scene/camera.position + Vector2(30,20)
-	#var tuberia_nueva = atc.instantiate() as Area2D
-	#$/root/main_scene/objects/pipes.add_child(tuberia_nueva)
-	#tuberia_nueva.position = position_a
-	pass
+	position_a = $/root/main_scene/camera.position + Vector2(30,20)
+	var tuberia_nueva = valve.instantiate() as Area2D
+	$/root/main_scene/objects/pipes.add_child(tuberia_nueva)
+	tuberia_nueva.position = position_a
 
 func _on_vertical_meter_button_pressed() -> void:
 	position_a = $/root/main_scene/camera.position + Vector2(30,20)
@@ -94,7 +93,7 @@ func _on_master_controller_button_pressed() -> void:
 
 func _on_timer_timeout() -> void:
 	time_passed += 1
-	%timer.text = "%02d:%02d" % [time_passed/60,time_passed%60]
+	%timer.text = " %02d:%02d" % [time_passed/60,time_passed%60]
 	
 	
 	

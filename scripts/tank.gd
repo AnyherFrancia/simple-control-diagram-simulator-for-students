@@ -6,21 +6,34 @@ func _ready() -> void:
 	type = "source"
 	getting_in = 5
 	auto_fill = true
+	config_window = preload("res://scenes/configs_sub_window.tscn")
 
 func _physics_process(delta: float) -> void:
-	if flow_status < max_capacity and not areaa_dic["source"]:
-		flow_status += snapped(getting_in*delta, 0.01) 
 	if local_selected:
 		self.position = lerp(global_position, get_global_mouse_position(), 25 * delta)
-	if not auto_fill:
+	if auto_fill:
+		if flow_status < max_capacity:
+			flow_status += snapped(getting_in*delta,0.01)
+	else:
 		if areaa_dic:
 			for area in areaa_dic:
 				match area:
 					'source':
 						if areaa_dic[area]:
 							if areaa_dic[area].flow_status > 0:
-								getting_in = snapped(areaa_dic[area].flow_status*0.001, 0.01) 
-								areaa_dic[area].flow_status -= getting_in
+								match manual:
+									true:
+										if areaa_dic[area].flow_status > getting_in:
+											if flow_status < max_capacity and areaa_dic['source']:
+												flow_status += snapped(getting_in*delta,0.01)
+												areaa_dic[area].flow_status -= snapped(getting_in*delta,0.01)
+										else:
+											flow_status = snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01)
+											areaa_dic[area].flow_status -= snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01)
+									false:
+										flow_status += getting_in
+										getting_in = snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01) 
+										areaa_dic[area].flow_status -= getting_in
 							sourcing = true
 					_:
 						pass
@@ -48,3 +61,11 @@ func _physics_process(delta: float) -> void:
 		$Tanque.play('below_100')
 	elif flow_status/max_capacity == 100:
 		$Tanque.play("100")
+
+
+func window_handler():
+	var new_window = global_window.on_new_window()
+	var attributes_window = config_window.instantiate() as Control
+	attributes_window.parent = self
+	$/root/main_scene/sub_windows.add_child(new_window)
+	new_window.add_child(attributes_window)

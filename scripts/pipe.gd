@@ -1,8 +1,9 @@
 extends main_class
 func _ready() -> void:
-	max_capacity = 20
+	max_capacity = 10
 	type = "tuberia"
 	config_window = preload("res://scenes/configs_sub_window.tscn")
+	$sprite.self_modulate = Color(0.352, 0.521, 0.533, 1.0)
 
 func _physics_process(delta: float) -> void:
 	if local_selected:
@@ -12,17 +13,45 @@ func _physics_process(delta: float) -> void:
 		if flow_status < max_capacity:
 			flow_status += snapped(getting_in*delta,0.01)
 	else:
-		if flow_status < max_capacity and areaa_dic['source']:
-			flow_status += getting_in
 		if areaa_dic:
 			for area in areaa_dic:
 				match area:
 					'source':
 						if areaa_dic[area]:
-							if areaa_dic[area].flow_status > 0:
-								getting_in = snapped(areaa_dic[area].flow_status*0.001, 0.01) 
-								areaa_dic[area].flow_status -= getting_in
+							if areaa_dic[area].type == "valvula" and areaa_dic[area].flow_status_2nd > 0:
+								match manual:
+									true:
+										if areaa_dic[area].flow_status > getting_in:
+											if flow_status < max_capacity and areaa_dic['source']:
+												flow_status += snapped(getting_in*delta,0.01)
+												areaa_dic[area].flow_status_2nd -= snapped(getting_in*delta,0.01)
+										else:
+											flow_status = snapped(((max_capacity+areaa_dic[area].flow_status_2nd)/max_capacity)*delta, 0.01)
+											areaa_dic[area].flow_status_2nd -= snapped(((max_capacity+areaa_dic[area].flow_status_2nd)/max_capacity)*delta, 0.01)
+									false:
+										if areaa_dic[area].flow_status > 0 and flow_status < max_capacity:
+											flow_status += getting_in
+											getting_in = snapped(((max_capacity+areaa_dic[area].flow_status_2nd)/max_capacity)*delta, 0.01) 
+											areaa_dic[area].flow_status_2nd -= getting_in
+							elif areaa_dic[area].flow_status > 0:
+								match manual:
+									true:
+										if areaa_dic[area].flow_status > getting_in:
+											if flow_status < max_capacity and areaa_dic['source']:
+												flow_status += snapped(getting_in*delta,0.01)
+												areaa_dic[area].flow_status -= snapped(getting_in*delta,0.01)
+										else:
+											flow_status = snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01)
+											areaa_dic[area].flow_status -= snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01)
+									false:
+										if areaa_dic[area].flow_status > 0 and flow_status < max_capacity:
+											flow_status += getting_in
+											getting_in = snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01) 
+											areaa_dic[area].flow_status -= getting_in
 							sourcing = true
+							$sprite.self_modulate = Color(0.0, 0.663, 0.0, 1.0)
+								
+								
 					_:
 						pass
 	if parents:
@@ -40,6 +69,13 @@ func _physics_process(delta: float) -> void:
 				'medidor':
 					areaa_dic['medidor'] = parent
 				'tuberia':
+					if parent.sourcing == true and areaa_dic['source'] == null:
+						areaa_dic['source'] = parent
+						if parents[parent].name == 'right':
+							$sprite.flip_h = true
+					else:
+						pass
+				"valvula":
 					if parent.sourcing == true and areaa_dic['source'] == null:
 						areaa_dic['source'] = parent
 						if parents[parent].name == 'right':

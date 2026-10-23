@@ -14,15 +14,20 @@ func _physics_process(_delta: float) -> void:
 		for parent in parents:
 			match parent.type:
 				'controlador_esclavo':
+					areaa_dic['controlador_esclavo'] = parent
 					areaa_dic['punto b'] = parent.position
 				'medidor':
+					areaa_dic['medidor'] = parent
 					areaa_dic['punto a'] = parent.position
 				'controlador_maestro':
+					areaa_dic['controlador_maestro'] = parent
 					if not areaa_dic['punto a']:
 						areaa_dic['punto a'] = parent.position
 					elif not areaa_dic['punto b'] and not areaa_dic['punto a'] == parent.position:
 						areaa_dic['punto b'] = parent.position
 				"cable":
+					if not areaa_dic['medidor']:
+						areaa_dic['medidor'] = parent
 					areaa_dic['punto a'] = get_global_mouse_position()
 	if Input.is_action_just_pressed("right_click"):
 		queue_free()
@@ -30,6 +35,9 @@ func _physics_process(_delta: float) -> void:
 		position_a = areaa_dic["punto a"]
 		position_b = areaa_dic["punto b"]
 		var cable_nuevo = cable.instantiate() as Node2D
+		cable_nuevo.areaa_dic['medidor'] = areaa_dic['medidor']
+		cable_nuevo.areaa_dic['controlador_maestro'] = areaa_dic['controlador_maestro']
+		cable_nuevo.areaa_dic['controlador_esclavo'] = areaa_dic['controlador_esclavo']
 		$/root/main_scene/objects/cables.add_child(cable_nuevo)
 		cable_nuevo.get_child(1).shape.a = Vector2(position_a.x,position_a.y)
 		cable_nuevo.get_child(1).shape.b = Vector2(position_a.x,position_b.y)

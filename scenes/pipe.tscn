@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b8ifsp0re5sce"]
 
-[ext_resource type="Script" path="res://scripts/pipe.gd" id="1_ejsh2"]
-[ext_resource type="Texture2D" path="res://graficos/tuberia/tuberia3.png" id="2_4ybk5"]
-[ext_resource type="Texture2D" path="res://graficos/tuberia/tuberia2.png" id="3_tdldm"]
-[ext_resource type="Texture2D" path="res://graficos/tuberia/tuberia.png" id="4_ss4sx"]
+[ext_resource type="Script" uid="uid://cg7hmj216ludn" path="res://scripts/pipe.gd" id="1_ejsh2"]
+[ext_resource type="Texture2D" uid="uid://d3rce8xddc4xw" path="res://graficos/tuberia/tuberia3.png" id="2_4ybk5"]
+[ext_resource type="Texture2D" uid="uid://blsxri26wwwk0" path="res://graficos/tuberia/tuberia2.png" id="3_tdldm"]
+[ext_resource type="Texture2D" uid="uid://bgvg6yjd0gdhx" path="res://graficos/tuberia/tuberia.png" id="4_ss4sx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xubdd"]
 atlas = ExtResource("2_4ybk5")
@@ -103,14 +103,14 @@ size = Vector2(13, 14)
 size = Vector2(13, 14)
 
 [node name="pipe" type="Area2D" unique_id=52160825]
+visibility_layer = 2
 texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_ejsh2")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=423700338]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gcdjd")
-animation = &"normal"
-frame_progress = 0.28074637
 
 [node name="right" type="CollisionShape2D" parent="." unique_id=929566050]
 position = Vector2(14.625, 0)

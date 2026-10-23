@@ -31,7 +31,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-color = Color(0.8862616, 0.88626146, 0.8862615, 1)
+color = Color(0.105882354, 0.14117648, 0.20784314, 1)
 
 [node name="camera" type="Camera2D" parent="." unique_id=724590824]
 position = Vector2(960, 540)
@@ -44,15 +44,15 @@ script = ExtResource("1_w2twt")
 
 [node name="objects" type="Node2D" parent="." unique_id=2115624663]
 
-[node name="pipes" type="Node2D" parent="objects" unique_id=307800370]
-
-[node name="sources" type="Node2D" parent="objects" unique_id=747212344]
-
 [node name="cables" type="Node2D" parent="objects" unique_id=1739864490]
 
 [node name="controllers" type="Node2D" parent="objects" unique_id=370175106]
 
 [node name="others" type="Node2D" parent="objects" unique_id=1773835575]
+
+[node name="pipes" type="Node2D" parent="objects" unique_id=307800370]
+
+[node name="sources" type="Node2D" parent="objects" unique_id=747212344]
 
 [node name="hud" type="CanvasLayer" parent="." unique_id=1684274718]
 

@@ -13,6 +13,21 @@
 [ext_resource type="Texture2D" uid="uid://daepasyamrc2c" path="res://graficos/valvula/tuberia_ato_pieza_dos_agua_dos_75%.png" id="10_p4svu"]
 [ext_resource type="Texture2D" uid="uid://dvilh0mta8m4x" path="res://graficos/controladores/Controlador.png" id="11_fbx71"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v03f"]
+bg_color = Color(0.11372549, 0.7137255, 0.5254902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbx71"]
+bg_color = Color(0.105882354, 0.14117648, 0.20784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="hud_bottom" type="Control" unique_id=1727533427]
 layout_mode = 3
 anchors_preset = 15
@@ -43,18 +58,25 @@ size_flags_vertical = 2
 
 [node name="up_background" type="ColorRect" parent="main_container/VBoxContainer/up_container" unique_id=1287496337]
 layout_mode = 2
-color = Color(0.07058824, 0, 0.4392157, 1)
+color = Color(0.07450981, 0.08235294, 0.16470589, 1)
 
 [node name="timer_container" type="MarginContainer" parent="main_container/VBoxContainer/up_container" unique_id=993272079]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
+[node name="background" type="Panel" parent="main_container/VBoxContainer/up_container/timer_container" unique_id=1914074104]
+custom_minimum_size = Vector2(45, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5v03f")
+
 [node name="timer" type="Label" parent="main_container/VBoxContainer/up_container/timer_container" unique_id=82704140]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "00:00"
+text = " 00:00"
 
 [node name="Timer" type="Timer" parent="main_container/VBoxContainer/up_container/timer_container" unique_id=1885391652]
 autostart = true
@@ -66,6 +88,21 @@ size_flags_stretch_ratio = 6.02
 
 [node name="bottom_background" type="ColorRect" parent="main_container/VBoxContainer/bottom_container" unique_id=811779767]
 layout_mode = 2
+color = Color(0.07450981, 0.08235294, 0.16470589, 1)
+
+[node name="left_buttons_background" type="Panel" parent="main_container/VBoxContainer/bottom_container/bottom_background" unique_id=2135833317]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 409.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbx71")
+
+[node name="right_buttons_background" type="Panel" parent="main_container/VBoxContainer/bottom_container/bottom_background" unique_id=1827331533]
+layout_mode = 0
+offset_left = 418.0
+offset_right = 776.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbx71")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container" unique_id=1576123773]
 layout_mode = 2
@@ -226,15 +263,6 @@ region_rect = Rect2(3.0206327, 0, 29.096077, 15.78261)
 [node name="first_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=1401375657]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-
-[node name="separator_color" type="ColorRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/first_separator" unique_id=2123121622]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.07058824, 0, 0.4392157, 1)
 
 [node name="center_container" type="MarginContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=557086349]
 unique_name_in_owner = true
@@ -458,15 +486,6 @@ region_rect = Rect2(1.9092007, -0.036088943, 14.086254, 13.257023)
 [node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=906749618]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-
-[node name="separator_color" type="ColorRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/second_separator" unique_id=63499361]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.07058824, 0, 0.4392157, 1)
 
 [connection signal="timeout" from="main_container/VBoxContainer/up_container/timer_container/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/pipe_button" to="." method="_on_pipe_button_pressed"]
