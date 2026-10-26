@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cukdegdn1mnxe" path="res://graficos/hud/let_see.png" id="1_s6oht"]
 [ext_resource type="Texture2D" uid="uid://6xatck0so6mv" path="res://graficos/hud/let_see_3.png" id="2_7jvvv"]
 [ext_resource type="Texture2D" uid="uid://blumhacp4eucd" path="res://graficos/hud/let_see_2.png" id="3_l2p7v"]
-[ext_resource type="Texture2D" uid="uid://d3rce8xddc4xw" path="res://graficos/tuberia/tuberia3.png" id="4_s1rnf"]
-[ext_resource type="Texture2D" uid="uid://blnr7xgtgwuvc" path="res://graficos/tanque/Tanque_default.png" id="5_l2p7v"]
-[ext_resource type="Texture2D" uid="uid://tak4osdi30eq" path="res://graficos/valvula/tuberia_ato_pieza_dos_agua_dos_0%.png" id="6_s1rnf"]
-[ext_resource type="Texture2D" uid="uid://dls3w3o7h7rr8" path="res://graficos/controladores/Medidor de Flujo.png" id="7_h3l1q"]
-[ext_resource type="Texture2D" uid="uid://bmxkvwkgacalj" path="res://graficos/cable/Cable_de_transmisión.png" id="8_xdk5i"]
-[ext_resource type="Texture2D" uid="uid://qmpy676a7072" path="res://graficos/tanque/Tanque_75_to_100.png" id="9_xdk5i"]
-[ext_resource type="Texture2D" uid="uid://daepasyamrc2c" path="res://graficos/valvula/tuberia_ato_pieza_dos_agua_dos_75%.png" id="10_p4svu"]
-[ext_resource type="Texture2D" uid="uid://dvilh0mta8m4x" path="res://graficos/controladores/Controlador.png" id="11_fbx71"]
+[ext_resource type="Texture2D" uid="uid://bepl6pfsw8lvq" path="res://graficos/icons/pipes.png" id="5_fbx71"]
+[ext_resource type="Texture2D" uid="uid://ba0d17vkhqewp" path="res://graficos/icons/fuel-tank.png" id="6_5v03f"]
+[ext_resource type="Texture2D" uid="uid://dhrms7i15d6wl" path="res://graficos/icons/valve.png" id="7_hs27l"]
+[ext_resource type="Texture2D" uid="uid://4ivxwhgn3l22" path="res://graficos/icons/meter_icon.png" id="8_kho8v"]
+[ext_resource type="Texture2D" uid="uid://h4xxepsxg7k1" path="res://graficos/icons/cable_icon.png" id="9_5hc75"]
+[ext_resource type="Texture2D" uid="uid://2pqjr12wvgi5" path="res://graficos/icons/pipe.png" id="10_pid1a"]
+[ext_resource type="Texture2D" uid="uid://dpunwvylttfai" path="res://graficos/icons/slave_controller_icon.png" id="11_q3pnn"]
+[ext_resource type="Texture2D" uid="uid://dffuv2ryimqlf" path="res://graficos/icons/controller_icon.png" id="12_syhsr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v03f"]
 bg_color = Color(0.11372549, 0.7137255, 0.5254902, 1)
@@ -142,13 +142,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -27.5
-offset_top = -18.5
+offset_top = -37.5
 offset_right = 28.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_s1rnf")
-region_rect = Rect2(0, 0, 32.11671, 15.78261)
+texture = ExtResource("5_fbx71")
+region_rect = Rect2(0, 0, 507.59637, 509.70142)
 
 [node name="tank_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=910095133]
 texture_filter = 1
@@ -167,13 +167,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -25.5
-offset_top = -29.5
+offset_top = -36.5
 offset_right = 26.5
-offset_bottom = 26.5
+offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_l2p7v")
-region_rect = Rect2(0, 0, 64.28642, 63.59516)
+texture = ExtResource("6_5v03f")
+region_rect = Rect2(0, 0, 512.87555, 510.21918)
 
 [node name="valve_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=664569351]
 texture_filter = 1
@@ -192,13 +192,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -25.5
-offset_top = -29.5
+offset_top = -32.5
 offset_right = 25.5
-offset_bottom = 25.5
+offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_s1rnf")
-region_rect = Rect2(0, 0, 10.897789, 13.693317)
+texture = ExtResource("7_hs27l")
+region_rect = Rect2(0, 0, 511.10394, 508.44763)
 
 [node name="meter_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=667199993]
 texture_filter = 1
@@ -219,10 +219,10 @@ anchor_bottom = 0.5
 offset_left = -23.5
 offset_top = -30.5
 offset_right = 25.5
-offset_bottom = 24.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_h3l1q")
+texture = ExtResource("8_kho8v")
 region_rect = Rect2(0, 0, 15.886564, 18.103687)
 
 [node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors" unique_id=590131852]
@@ -257,7 +257,7 @@ offset_right = 25.5
 offset_bottom = 16.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_xdk5i")
+texture = ExtResource("9_5hc75")
 region_rect = Rect2(3.0206327, 0, 29.096077, 15.78261)
 
 [node name="first_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=1401375657]
@@ -301,13 +301,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -23.5
-offset_top = -12.5
+offset_top = -18.5
 offset_right = 24.5
-offset_bottom = 13.5
+offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_s1rnf")
-region_rect = Rect2(32.11671, 15.787495, 32.05798, 15.83799)
+texture = ExtResource("10_pid1a")
+region_rect = Rect2(0.8944092, -1.4426575, 511.98114, 377.3425)
 
 [node name="vertical_tanks" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=1353207972]
 unique_name_in_owner = true
@@ -342,12 +342,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -19.5
 offset_top = -21.5
-offset_right = 20.5
-offset_bottom = 21.5
+offset_right = 32.5
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_xdk5i")
-region_rect = Rect2(-0.07207489, -0.036088943, 64.246765, 63.614662)
+texture = ExtResource("6_5v03f")
+region_rect = Rect2(-0.07207489, -0.036088943, 512.9116, 517.3234)
 
 [node name="vertical_valves" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=730894210]
 unique_name_in_owner = true
@@ -386,8 +386,8 @@ offset_right = 20.5
 offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_p4svu")
-region_rect = Rect2(-0.07207489, -0.036088943, 11.033676, 13.723574)
+texture = ExtResource("7_hs27l")
+region_rect = Rect2(-0.07207489, -0.036088943, 511.14, 513.78033)
 
 [node name="vertical_controllers" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=2147333732]
 unique_name_in_owner = true
@@ -426,7 +426,7 @@ offset_right = 13.5
 offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_h3l1q")
+texture = ExtResource("8_kho8v")
 region_rect = Rect2(2.009386, -0.036088943, 11.977488, 18.231733)
 
 [node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers" unique_id=439714391]
@@ -448,13 +448,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -13.0
+offset_left = -21.5
 offset_top = -21.5
-offset_right = 13.0
-offset_bottom = 21.5
+offset_right = 17.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_fbx71")
+texture = ExtResource("11_q3pnn")
 region_rect = Rect2(1.9092007, -0.036088943, 14.086254, 20.182564)
 
 [node name="master_controller_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers" unique_id=479627515]
@@ -480,8 +480,8 @@ offset_right = 19.75
 offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("11_fbx71")
-region_rect = Rect2(1.9092007, -0.036088943, 14.086254, 13.257023)
+texture = ExtResource("12_syhsr")
+region_rect = Rect2(-0.034168243, -0.036088943, 10.96476, 11.234412)
 
 [node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=906749618]
 custom_minimum_size = Vector2(10, 0)

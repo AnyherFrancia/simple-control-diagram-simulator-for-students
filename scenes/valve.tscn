@@ -900,16 +900,21 @@ scale = Vector2(2, 2)
 script = ExtResource("1_wcxr6")
 
 [node name="sprite_left" type="AnimatedSprite2D" parent="." unique_id=1218282205]
+visible = false
 texture_filter = 1
 position = Vector2(-1, 9.536743e-07)
 sprite_frames = SubResource("SpriteFrames_17j78")
 animation = &"medium_flow_0%"
 
 [node name="sprite_right" type="AnimatedSprite2D" parent="." unique_id=1193871455]
+visible = false
 texture_filter = 1
 position = Vector2(15, 0)
 sprite_frames = SubResource("SpriteFrames_32jy6")
 animation = &"default_0%"
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1735040363]
+texture = ExtResource("12_esklw")
 
 [node name="left" type="CollisionShape2D" parent="." unique_id=802674635]
 position = Vector2(-16, 9.536743e-07)

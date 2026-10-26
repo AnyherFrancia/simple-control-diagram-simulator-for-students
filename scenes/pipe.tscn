@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg7hmj216ludn" path="res://scripts/pipe.gd" id="1_ejsh2"]
 [ext_resource type="Texture2D" uid="uid://d3rce8xddc4xw" path="res://graficos/tuberia/tuberia3.png" id="2_4ybk5"]
+[ext_resource type="Texture2D" uid="uid://dq2jrjykvvfne" path="res://graficos/tuberia/plums.png" id="2_tdldm"]
 [ext_resource type="Texture2D" uid="uid://blsxri26wwwk0" path="res://graficos/tuberia/tuberia2.png" id="3_tdldm"]
 [ext_resource type="Texture2D" uid="uid://bgvg6yjd0gdhx" path="res://graficos/tuberia/tuberia.png" id="4_ss4sx"]
 
@@ -108,7 +109,15 @@ texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_ejsh2")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1550044416]
+position = Vector2(-4.7683716e-07, -1.1920929e-07)
+scale = Vector2(0.9375, 0.70000005)
+texture = ExtResource("2_tdldm")
+region_enabled = true
+region_rect = Rect2(127.8032, 69.854034, 32.219673, 20.303856)
+
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=423700338]
+visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gcdjd")
 
