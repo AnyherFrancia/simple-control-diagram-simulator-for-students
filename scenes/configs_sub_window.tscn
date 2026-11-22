@@ -18,15 +18,15 @@ var point_position: Vector2
 var parent: Node
 	
 func _ready() -> void:
-	%auto_fill_button.button_pressed = parent.auto_fill
+	%auto_fill_button.button_pressed = parent.main_dictionary['auto_fill']
 
 func _on_timer_timeout() -> void:
 	if graph_points.size() <= 10 and parent:
-		graph_points.append(snapped(parent.flow_status/parent.max_capacity,0.01))
+		graph_points.append(snapped(parent.main_dictionary['flow_status']/parent.main_dictionary['max_capacity'],0.01))
 	else:
 		if parent:
 			graph_constructor(0)
-			graph_points[9] = snapped(parent.flow_status/parent.max_capacity,0.01)
+			graph_points[9] = snapped(parent.main_dictionary['flow_status']/parent.main_dictionary['max_capacity'],0.01)
 	for point in range(10):
 			if graph_points[point]!= null:
 				point_position = %graph_line.get_point_position(point)
@@ -37,13 +37,14 @@ func _process(_delta: float) -> void:
 	if not self.get_parent():
 		self.queue_free()
 	if %watch_attributes.visible and parent:
-		%max_capacity_text.text = str(parent.max_capacity)
-		%flow_text.text = str(snapped(parent.flow_status,0.01))+'/'+str(snapped(parent.max_capacity,0.01))
-		%inflow_text.text = str(snapped(parent.getting_in,0.01))+'L seg'
+		%max_capacity_text.text = str(parent.main_dictionary['max_capacity'])
+		%flow_text.text = str(snapped(parent.main_dictionary['flow_status'],0.01))+'/'+str(snapped(parent.main_dictionary['max_capacity'],0.01))
+		%inflow_text.text = str(snapped(parent.main_dictionary['getting_in'],0.01))+'L seg'
 	elif %edit_attributes.visible and parent:
-		%max_capacity_edit.placeholder_text = str(parent.max_capacity)
-		%flow_edit.placeholder_text = str(snapped(parent.flow_status,0.01))
-		%inflow_edit.placeholder_text = str(snapped(parent.getting_in,0.01))
+		%max_capacity_edit.placeholder_text = str(parent.main_dictionary['max_capacity'])
+		%flow_edit.placeholder_text = str(snapped(parent.main_dictionary['flow_status'],0.01))
+		%inflow_edit.placeholder_text = str(snapped(parent.main_dictionary['getting_in'],0.01))
+		%max_flow_edit.placeholder_text = str(snapped(parent.main_dictionary['max_flow'],0.01))
 
 func graph_constructor(point: int) -> void:
 	if point == 9:
@@ -75,31 +76,33 @@ func _on_delete_object_pressed() -> void:
 func _on_auto_fill_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		%auto_fill_button.text = \"Si\"
-		parent.auto_fill = true
-		parent.sourcing = true
+		parent.main_dictionary['auto_fill'] = true
+		parent.main_dictionary['sourcing'] = true
 	else:
 		%auto_fill_button.text = \"No\"
-		parent.auto_fill = false
+		parent.main_dictionary['auto_fill'] = false
 
 func _on_max_capacity_edit_text_submitted(new_text: String) -> void:
-	parent.max_capacity = float(new_text)
+	parent.main_dictionary['max_capacity'] = float(new_text)
 
 func _on_flow_edit_text_submitted(new_text: String) -> void:
-	parent.flow_status = float(new_text)
+	parent.main_dictionary['flow_status'] = float(new_text)
 
 func _on_inflow_edit_text_submitted(new_text: String) -> void:
-	parent.getting_in = float(new_text)
+	parent.main_dictionary['getting_in'] = float(new_text)
 
+func _on_max_flow_edit_text_submitted(new_text: String) -> void:
+	parent.main_dictionary['max_flow'] = float(new_text)
 
 func _on_manual_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		%manual_button.text = \"Si\"
 		parent.manual = true
-		parent.sourcing = true
+		parent.main_dictionary['sourcing'] = true
 	else:
 		%manual_button.text = \"No\"
 		parent.manual = false
-		parent.sourcing = false
+		parent.main_dictionary['sourcing'] = false
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ov4yh"]
@@ -349,6 +352,7 @@ offset_top = 20.0
 offset_right = 486.0
 offset_bottom = 355.0
 size_flags_vertical = 3
+theme_override_constants/separation = 3
 
 [node name="max_capacity" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=1012982828]
 custom_minimum_size = Vector2(0, 30)
@@ -377,6 +381,36 @@ placeholder_text = "0"
 flat = true
 
 [node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/max_capacity" unique_id=11913197]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="max_flow" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=718690358]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/max_flow" unique_id=1980908423]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="max_flow_text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/max_flow" unique_id=1353045595]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "Flujo máximo posible"
+
+[node name="max_flow_edit" type="LineEdit" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/max_flow" unique_id=1903426765]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/clear_button_color = Color(1, 1, 1, 1)
+theme_override_colors/clear_button_color_pressed = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+placeholder_text = "0"
+flat = true
+
+[node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/max_flow" unique_id=982692253]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
@@ -481,6 +515,7 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=443089724]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -740,7 +775,7 @@ texture_filter = 2
 position = Vector2(-44, 0)
 points = PackedVector2Array(45, 172, 83, 172, 121, 172, 159, 172, 197, 172, 235, 172, 273, 172, 311, 172, 349, 172, 385, 172)
 width = 2.5
-default_color = Color(0.98039216, 0.7294118, 0.25490198, 1)
+default_color = Color(0.14509805, 0.6509804, 0.8745098, 1)
 
 [node name="x_axis" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container" unique_id=1114426393]
 layout_mode = 2
@@ -847,6 +882,7 @@ autostart = true
 [connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/up_buttons_container/up_buttons/watch_attributes" to="." method="_on_watch_attributes_pressed"]
 [connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/up_buttons_container/up_buttons/edit_attributes" to="." method="_on_edit_attributes_pressed"]
 [connection signal="text_submitted" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/max_capacity/max_capacity_edit" to="." method="_on_max_capacity_edit_text_submitted"]
+[connection signal="text_submitted" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/max_flow/max_flow_edit" to="." method="_on_max_flow_edit_text_submitted"]
 [connection signal="text_submitted" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/flow/flow_edit" to="." method="_on_flow_edit_text_submitted"]
 [connection signal="text_submitted" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_in/inflow_edit" to="." method="_on_inflow_edit_text_submitted"]
 [connection signal="toggled" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill/auto_fill_button" to="." method="_on_auto_fill_button_toggled"]

@@ -19,6 +19,7 @@ run/max_fps=120
 
 Global="*uid://1jba4ieelxh2"
 global_window="*uid://d3xu7qbql8ebt"
+SaveManager="*uid://pleikn0uhsmj"
 
 [display]
 

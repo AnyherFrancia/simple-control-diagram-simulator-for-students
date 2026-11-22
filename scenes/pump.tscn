@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://d0k40bmmy15bi"]
+
+[ext_resource type="Texture2D" uid="uid://ce4sh7jcnurpu" path="res://graficos/pump/pump.png" id="1_5htj6"]
+[ext_resource type="Script" uid="uid://yt6jqxoanj5v" path="res://scripts/pump.gd" id="1_gxxct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxxct"]
+size = Vector2(12.75, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcal7"]
+size = Vector2(13.75, 14)
+
+[node name="pump" type="Area2D" unique_id=1333432125]
+scale = Vector2(2, 2)
+script = ExtResource("1_gxxct")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=44278849]
+position = Vector2(-2.4999998, -0.5299995)
+scale = Vector2(0.6111111, 0.63)
+texture = ExtResource("1_5htj6")
+
+[node name="right" type="CollisionShape2D" parent="." unique_id=1599496589]
+position = Vector2(-17, -3)
+shape = SubResource("RectangleShape2D_gxxct")
+
+[node name="right2" type="CollisionShape2D" parent="." unique_id=617824273]
+position = Vector2(13, -3)
+shape = SubResource("RectangleShape2D_gxxct")
+
+[node name="center" type="CollisionShape2D" parent="." unique_id=1659745675]
+position = Vector2(-1, -6)
+shape = SubResource("RectangleShape2D_mcal7")
+
+[node name="rpm" type="Label" parent="." unique_id=1028026119]
+offset_left = -10.0
+offset_top = 12.0
+offset_right = 59.0
+offset_bottom = 35.0
+scale = Vector2(0.3, 0.3)
+text = "0 - 0 rpm"
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

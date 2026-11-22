@@ -1,28 +1,37 @@
 extends Area2D
 class_name main_class
-var getting_in: float
-var max_capacity: float
-var flow_status: float
-var local_selected: bool = false
-var sourcing: bool = false
-var conected: bool = false
-var auto_fill: bool = false
-var manual: bool = false
-var fail_state: bool = false
-var areas_entered: Dictionary = {}
-var parents: Dictionary = {}
-var areaa_dic: Dictionary[String,Variant] = {
-	'source': null, 
-	'tuberia': null, 
-	'cable': null,
-	'controlador_maestro': null,
-	"controlador_esclavo": null,
-	'medidor': null,
-	"cable_transmision": null,
-	"valvula": null
+var main_dictionary: Dictionary = {
+	'getting_in': 0.0,
+	'max_capacity': 0.0,
+	'max_flow': 0.0,
+	'flow_status': 0.0,
+	'local_selected': false,
+	'sourcing': false,
+	'conected': false,
+	'auto_fill': false,
+	'manual': false,
+	'fail_state': false,
+	'areas_entered': {},
+	'parents': {},
+	'areaa_dic': {
+		'source': null, 
+		'tuberia': null, 
+		'cable': null,
+		'controlador_maestro': null,
+		"controlador_esclavo": null,
+		'medidor': null,
+		"cable_transmision": null,
+		"valvula": null,
+		"funcion": null,
+		"bomba": null,
+		"selector": null,
+		"convertidor": null
+	},
+	'unit': '',
+	'type': '',
+	'config_window': PackedScene
 }
-var type: String
-var config_window: PackedScene
+
 
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area:
@@ -31,9 +40,9 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, area_shape_index: int,
 		var local_owner_id = shape_find_owner(local_shape_index)
 		var local_shape = shape_owner_get_owner(local_owner_id)
 		var parent = shape_node.get_parent()
-		if not parent.type == 'cable' and not parent.type == 'cable_transmision':
-			parents[parent] = local_shape
-			areas_entered[shape_node] = local_shape
+		if not parent.main_dictionary['type'] == 'cable' and not parent.main_dictionary['type'] == 'cable_transmision':
+			main_dictionary['parents'][parent] = local_shape
+			main_dictionary['areas_entered'][shape_node] = local_shape
 	else:
 		pass
 
@@ -42,25 +51,33 @@ func _on_area_shape_exited(_area_rid: RID, area: Area2D, area_shape_index: int, 
 		var owner_id = area.shape_find_owner(area_shape_index)
 		var shape_node = area.shape_owner_get_owner(owner_id)
 		var parent = shape_node.get_parent()
-		if not parent.type == 'cable' and not parent.type == 'cable_transmision':
-			areas_entered.erase(shape_node)
-			parents.erase(shape_node.get_parent())
+		if not parent.main_dictionary['type'] == 'cable' and not parent.main_dictionary['type'] == 'cable_transmision':
+			main_dictionary['areas_entered'].erase(shape_node)
+			main_dictionary['parents'].erase(shape_node.get_parent())
 	else:
 		pass
 
 func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	if Input.is_action_just_pressed("left_click") and not Global.selected:
-		local_selected = true
+		main_dictionary['local_selected'] = true
 		Global.selected = true
-		conected = true
+		main_dictionary['conected'] = true
 	elif Input.is_action_just_pressed("right_click"):
 		window_handler()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if Input.is_action_just_released("left_click"):
-			local_selected = false
+			main_dictionary['local_selected'] = false
 			Global.selected = false
 
 func window_handler():
+	pass
+
+func save_state(data: Dictionary):
+	for argument in main_dictionary:
+		data[argument] = main_dictionary[argument]
+	data['type'] = main_dictionary['type']
+
+func load_state():
 	pass

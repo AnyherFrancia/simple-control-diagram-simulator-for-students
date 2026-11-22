@@ -1,71 +1,61 @@
 extends main_class
 
 func _ready() -> void:
-	sourcing = true
-	max_capacity = 80
-	type = "source"
-	getting_in = 5
-	auto_fill = true
-	config_window = preload("res://scenes/configs_sub_window.tscn")
+	add_to_group("save")
+	main_dictionary['unit'] = "L"
+	main_dictionary['sourcing'] = true
+	main_dictionary['max_capacity'] = 80
+	main_dictionary['type'] = "source"
+	main_dictionary['getting_in'] = 5
+	main_dictionary['auto_fill'] = true
+	main_dictionary['config_window'] = preload("res://scenes/configs_sub_window.tscn")
 
 func _physics_process(delta: float) -> void:
-	if local_selected:
+	if main_dictionary['local_selected']:
 		self.position = lerp(global_position, get_global_mouse_position(), 25 * delta)
-	if auto_fill:
-		if flow_status < max_capacity:
-			flow_status += snapped(getting_in*delta,0.01)
+	if main_dictionary['auto_fill']:
+		if main_dictionary['flow_status'] < main_dictionary['max_capacity']:
+			main_dictionary['flow_status'] += snapped(main_dictionary['getting_in']*delta,0.01)
 	else:
-		if areaa_dic:
-			for area in areaa_dic:
+		if main_dictionary['areaa_dic']:
+			for area in main_dictionary['areaa_dic']:
 				match area:
 					'source':
-						if areaa_dic[area]:
-							if areaa_dic[area].flow_status > 0:
-								match manual:
+						if main_dictionary['areaa_dic'][area]:
+							if main_dictionary['areaa_dic'][area].main_dictionary['flow_status'] > 0:
+								match main_dictionary['manual']:
 									true:
-										if areaa_dic[area].flow_status > getting_in:
-											if flow_status < max_capacity and areaa_dic['source']:
-												flow_status += snapped(getting_in*delta,0.01)
-												areaa_dic[area].flow_status -= snapped(getting_in*delta,0.01)
+										if main_dictionary['areaa_dic'][area].main_dictionary['flow_status'] > main_dictionary['getting_in']:
+											if main_dictionary['flow_status'] < main_dictionary['max_capacity'] and main_dictionary['areaa_dic']['source']:
+												main_dictionary['flow_status'] += snapped(main_dictionary['getting_in']*delta,0.01)
+												main_dictionary['areaa_dic'][area].main_dictionary['flow_status'] -= snapped(main_dictionary['getting_in']*delta,0.01)
 										else:
-											flow_status = snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01)
-											areaa_dic[area].flow_status -= snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01)
+											main_dictionary['flow_status'] = snapped(((main_dictionary['max_capacity']+main_dictionary['areaa_dic'][area].main_dictionary['flow_status'])/main_dictionary['max_capacity'])*delta, 0.01)
+											main_dictionary['areaa_dic'][area].main_dictionary['flow_status'] -= snapped(((main_dictionary['max_capacity']+main_dictionary['areaa_dic'][area].main_dictionary['flow_status'])/main_dictionary['max_capacity'])*delta, 0.01)
 									false:
-										flow_status += getting_in
-										getting_in = snapped(((max_capacity+areaa_dic[area].flow_status)/max_capacity)*delta, 0.01) 
-										areaa_dic[area].flow_status -= getting_in
-							sourcing = true
+										main_dictionary['flow_status'] += main_dictionary['getting_in']
+										main_dictionary['getting_in'] = snapped(((main_dictionary['max_capacity']+main_dictionary['areaa_dic'][area].main_dictionary['flow_status'])/main_dictionary['max_capacity'])*delta, 0.01) 
+										main_dictionary['areaa_dic'][area].main_dictionary['flow_status'] -= main_dictionary['getting_in']
+							main_dictionary['sourcing'] = true
 					_:
 						pass
-	if parents:
-		for parent in parents:
-			match parent.type:
+	if main_dictionary['parents']:
+		for parent in main_dictionary['parents']:
+			match parent.main_dictionary['type']:
 				'medidor':
-					areaa_dic['medidor'] = parent
+					main_dictionary['areaa_dic']['medidor'] = parent
 				'tuberia':
-					if parent.sourcing == true and sourcing == false:
-						areaa_dic['source'] = parent
+					if parent.main_dictionary['sourcing'] == true and main_dictionary['sourcing'] == false:
+						main_dictionary['areaa_dic']['source'] = parent
 					else:
 						pass
 				_:
 					pass
-	if flow_status/max_capacity <= 0:
-		$Tanque.play('default')
-	elif flow_status/max_capacity > 0 and flow_status/max_capacity <= 0.25:
-		$Tanque.play('below_25')
-	elif flow_status/max_capacity > 0.25 and flow_status/max_capacity <= 0.50 :
-		$Tanque.play('below_50')
-	elif flow_status/max_capacity > 0.50 and flow_status/max_capacity <= 0.75:
-		$Tanque.play('below_75')
-	elif flow_status/max_capacity > 0.75:
-		$Tanque.play('below_100')
-	elif flow_status/max_capacity == 100:
-		$Tanque.play("100")
-
+	$water_level.set_point_position(1,Vector2(-2.0,21.0-(56.0*(main_dictionary['flow_status']/main_dictionary['max_capacity']))))
 
 func window_handler():
 	var new_window = global_window.on_new_window()
-	var attributes_window = config_window.instantiate() as Control
+	var attributes_window = main_dictionary['config_window'].instantiate() as Control
 	attributes_window.parent = self
 	$/root/main_scene/sub_windows.add_child(new_window)
 	new_window.add_child(attributes_window)

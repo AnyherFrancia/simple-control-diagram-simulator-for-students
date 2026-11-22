@@ -83,12 +83,23 @@ theme_override_font_sizes/font_size = 19
 text = "Nivel #3: 0%"
 metadata/_edit_use_anchors_ = true
 
+[node name="set_point" type="Label" parent="." unique_id=1683415591]
+texture_filter = 1
+offset_left = -23.0
+offset_top = -0.49999994
+offset_right = 108.0
+offset_bottom = 26.5
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 19
+text = "Set point: 0L/s"
+metadata/_edit_use_anchors_ = true
+
 [node name="mode" type="Label" parent="." unique_id=1892890081]
 texture_filter = 1
-offset_left = -21.0
-offset_top = -3.0
-offset_right = 73.0
-offset_bottom = 24.0
+offset_left = -5.000001
+offset_top = 4.4999995
+offset_right = 89.0
+offset_bottom = 31.5
 scale = Vector2(0.1, 0.1)
 theme_override_font_sizes/font_size = 19
 text = "Modo: Dir"

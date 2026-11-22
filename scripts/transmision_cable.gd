@@ -4,45 +4,75 @@ var position_a: Vector2
 var position_b: Vector2
 
 func _ready() -> void:
-	type = "cable_transmision"
-	areaa_dic["punto a"] = null
-	areaa_dic["punto b"] = null
+	main_dictionary['type'] = "cable_transmision"
+	main_dictionary['areaa_dic']["punto a"] = null
+	main_dictionary['areaa_dic']["punto b"] = null
 func _physics_process(_delta: float) -> void:
 	Global.selected = true
 	self.position = get_global_mouse_position() 
-	if Input.is_action_just_pressed("left_click") and parents:
-		for parent in parents:
-			match parent.type:
+	if Input.is_action_just_pressed("left_click") and main_dictionary['parents']:
+		for parent in main_dictionary['parents']:
+			match parent.main_dictionary['type']:
 				'controlador_esclavo':
-					areaa_dic['controlador_esclavo'] = parent
-					areaa_dic['punto b'] = parent.position
+					main_dictionary['areaa_dic']['controlador_esclavo'] = parent
+					main_dictionary['areaa_dic']['punto b'] = parent.position
 				'medidor':
-					areaa_dic['medidor'] = parent
-					areaa_dic['punto a'] = parent.position
+					main_dictionary['areaa_dic']['medidor'] = parent
+					main_dictionary['areaa_dic']['punto a'] = parent.position
 				'controlador_maestro':
-					areaa_dic['controlador_maestro'] = parent
-					if not areaa_dic['punto a']:
-						areaa_dic['punto a'] = parent.position
-					elif not areaa_dic['punto b'] and not areaa_dic['punto a'] == parent.position:
-						areaa_dic['punto b'] = parent.position
+					main_dictionary['areaa_dic']['controlador_maestro'] = parent
+					if not main_dictionary['areaa_dic']['punto a']:
+						main_dictionary['areaa_dic']['punto a'] = parent.position
+					elif not main_dictionary['areaa_dic']['punto b'] and not main_dictionary['areaa_dic']['punto a'] == parent.position:
+						main_dictionary['areaa_dic']['punto b'] = parent.position
 				"cable":
-					if not areaa_dic['medidor']:
-						areaa_dic['medidor'] = parent
-					areaa_dic['punto a'] = get_global_mouse_position()
+					if not main_dictionary['areaa_dic']['medidor']:
+						main_dictionary['areaa_dic']['medidor'] = parent
+					main_dictionary['areaa_dic']['punto a'] = get_global_mouse_position()
+				"funcion":
+					if not main_dictionary['areaa_dic']['funcion']:
+						main_dictionary['areaa_dic']['funcion'] = parent
+					if not main_dictionary['areaa_dic']['punto b']:
+						main_dictionary['areaa_dic']['punto b'] = parent.position
+					elif not main_dictionary['areaa_dic']['punto a']:
+						main_dictionary['areaa_dic']['punto a'] = parent.position
+				"bomba":
+					if not main_dictionary['areaa_dic']['bomba']:
+						main_dictionary['areaa_dic']['bomba'] = parent
+					if not main_dictionary['areaa_dic']['punto b']:
+						main_dictionary['areaa_dic']['punto b'] = parent.position
+					elif not main_dictionary['areaa_dic']['punto a']:
+						main_dictionary['areaa_dic']['punto a'] = parent.position
+				'convertidor':
+					if not main_dictionary['areaa_dic']['convertidor']:
+						main_dictionary['areaa_dic']['convertidor'] = parent
+					if not main_dictionary['areaa_dic']['punto b']:
+						main_dictionary['areaa_dic']['punto b'] = parent.position
+					elif not main_dictionary['areaa_dic']['punto a']:
+						main_dictionary['areaa_dic']['punto a'] = parent.position
+				"selector":
+					if not main_dictionary['areaa_dic']['selector']:
+						main_dictionary['areaa_dic']['selector'] = parent
+					if not main_dictionary['areaa_dic']['punto b']:
+						main_dictionary['areaa_dic']['punto b'] = parent.position
+					elif not main_dictionary['areaa_dic']['punto a']:
+						main_dictionary['areaa_dic']['punto a'] = parent.position
 	if Input.is_action_just_pressed("right_click"):
 		queue_free()
-	if areaa_dic['punto a'] and areaa_dic['punto b']:
-		position_a = areaa_dic["punto a"]
-		position_b = areaa_dic["punto b"]
+	if main_dictionary['areaa_dic']['punto a'] and main_dictionary['areaa_dic']['punto b']:
+		position_a = main_dictionary['areaa_dic']["punto a"]
+		position_b = main_dictionary['areaa_dic']["punto b"]
 		var cable_nuevo = cable.instantiate() as Node2D
-		cable_nuevo.areaa_dic['medidor'] = areaa_dic['medidor']
-		cable_nuevo.areaa_dic['controlador_maestro'] = areaa_dic['controlador_maestro']
-		cable_nuevo.areaa_dic['controlador_esclavo'] = areaa_dic['controlador_esclavo']
+		cable_nuevo.main_dictionary['areaa_dic']['medidor'] = main_dictionary['areaa_dic']['medidor']
+		cable_nuevo.main_dictionary['areaa_dic']['controlador_maestro'] = main_dictionary['areaa_dic']['controlador_maestro']
+		cable_nuevo.main_dictionary['areaa_dic']['controlador_esclavo'] = main_dictionary['areaa_dic']['controlador_esclavo']
+		cable_nuevo.main_dictionary['areaa_dic']['funcion'] = main_dictionary['areaa_dic']['funcion']
+		cable_nuevo.main_dictionary['areaa_dic']['convertidor'] = main_dictionary['areaa_dic']['convertidor']
+		cable_nuevo.main_dictionary['areaa_dic']['selector'] = main_dictionary['areaa_dic']['selector']
+		cable_nuevo.main_dictionary['areaa_dic']['bomba'] = main_dictionary['areaa_dic']['bomba']
+		cable_nuevo.main_dictionary['areaa_dic']['punto a'] = position_a
+		cable_nuevo.main_dictionary['areaa_dic']['punto b'] = position_b
 		$/root/main_scene/objects/cables.add_child(cable_nuevo)
-		cable_nuevo.get_child(1).shape.a = Vector2(position_a.x,position_a.y)
-		cable_nuevo.get_child(1).shape.b = Vector2(position_a.x,position_b.y)
-		cable_nuevo.get_child(2).shape.a = Vector2(position_a.x,position_b.y)
-		cable_nuevo.get_child(2).shape.b = Vector2(position_b.x,position_b.y)
 		cable_nuevo = cable_nuevo.get_child(0)
 		cable_nuevo.set_point_position(0,Vector2(position_a.x,position_a.y))
 		cable_nuevo.set_point_position(1,Vector2(position_a.x,position_b.y)) 

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dbcscdyc86mda"]
+
+[ext_resource type="Script" uid="uid://bfvw7lejjq8om" path="res://scripts/frecuency.gd" id="1_b6bwb"]
+[ext_resource type="Texture2D" uid="uid://bps2u5essa0mc" path="res://graficos/functions/variador de frecuencia.png" id="2_4g22t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcxy8"]
+size = Vector2(9, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m73i8"]
+size = Vector2(14, 12)
+
+[node name="frecuency" type="Area2D" unique_id=2094607929]
+script = ExtResource("1_b6bwb")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=25434419]
+scale = Vector2(2, 2)
+texture = ExtResource("2_4g22t")
+
+[node name="left" type="CollisionShape2D" parent="." unique_id=1634663572]
+position = Vector2(-25, 0)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hcxy8")
+
+[node name="right" type="CollisionShape2D" parent="." unique_id=1222826919]
+position = Vector2(25, 0)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hcxy8")
+
+[node name="center" type="CollisionShape2D" parent="." unique_id=1918584539]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_m73i8")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="." to="." method="_on_area_shape_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

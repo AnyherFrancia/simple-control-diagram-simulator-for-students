@@ -6,12 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://blumhacp4eucd" path="res://graficos/hud/let_see_2.png" id="3_l2p7v"]
 [ext_resource type="Texture2D" uid="uid://bepl6pfsw8lvq" path="res://graficos/icons/pipes.png" id="5_fbx71"]
 [ext_resource type="Texture2D" uid="uid://ba0d17vkhqewp" path="res://graficos/icons/fuel-tank.png" id="6_5v03f"]
+[ext_resource type="Texture2D" uid="uid://qp3g1xje27bc" path="res://graficos/icons/refinery.png" id="6_hlm6f"]
 [ext_resource type="Texture2D" uid="uid://dhrms7i15d6wl" path="res://graficos/icons/valve.png" id="7_hs27l"]
 [ext_resource type="Texture2D" uid="uid://4ivxwhgn3l22" path="res://graficos/icons/meter_icon.png" id="8_kho8v"]
 [ext_resource type="Texture2D" uid="uid://h4xxepsxg7k1" path="res://graficos/icons/cable_icon.png" id="9_5hc75"]
+[ext_resource type="Texture2D" uid="uid://cq028ikcje0e4" path="res://graficos/icons/function.png" id="10_5v03f"]
 [ext_resource type="Texture2D" uid="uid://2pqjr12wvgi5" path="res://graficos/icons/pipe.png" id="10_pid1a"]
 [ext_resource type="Texture2D" uid="uid://dpunwvylttfai" path="res://graficos/icons/slave_controller_icon.png" id="11_q3pnn"]
+[ext_resource type="Texture2D" uid="uid://cjs1vnlxik4gw" path="res://graficos/hud/sub_window_button.png" id="11_syhsr"]
+[ext_resource type="Texture2D" uid="uid://egn5a7013a4i" path="res://graficos/hud/sub_window_button_pressed.png" id="12_hlm6f"]
 [ext_resource type="Texture2D" uid="uid://dffuv2ryimqlf" path="res://graficos/icons/controller_icon.png" id="12_syhsr"]
+[ext_resource type="Texture2D" uid="uid://ji0jfqbqbr4a" path="res://graficos/hud/sub_window_button_hover.png" id="13_hsdkd"]
+[ext_resource type="Texture2D" uid="uid://ddo3pw0men7qu" path="res://graficos/icons/pump_icon.png" id="14_a7ypr"]
+[ext_resource type="Texture2D" uid="uid://bqnnwcaw1yqki" path="res://graficos/icons/frecuency_icon.png" id="16_f38gy"]
+[ext_resource type="Texture2D" uid="uid://delpp5yugddpp" path="res://graficos/icons/selector_icon.png" id="17_75pyk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v03f"]
 bg_color = Color(0.11372549, 0.7137255, 0.5254902, 1)
@@ -172,7 +180,7 @@ offset_right = 26.5
 offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_5v03f")
+texture = ExtResource("6_hlm6f")
 region_rect = Rect2(0, 0, 512.87555, 510.21918)
 
 [node name="valve_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line" unique_id=664569351]
@@ -260,6 +268,52 @@ grow_vertical = 2
 texture = ExtResource("9_5hc75")
 region_rect = Rect2(3.0206327, 0, 29.096077, 15.78261)
 
+[node name="function_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line" unique_id=1809346239]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="function_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line/function_button" unique_id=1233703405]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.5
+offset_right = 20.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_5v03f")
+
+[node name="pump_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line" unique_id=1465235720]
+custom_minimum_size = Vector2(85, 85)
+layout_mode = 2
+texture_normal = ExtResource("11_syhsr")
+texture_pressed = ExtResource("12_hlm6f")
+texture_hover = ExtResource("13_hsdkd")
+stretch_mode = 0
+
+[node name="pump_button_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line/pump_button" unique_id=1402774931]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -21.5
+offset_right = 13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5v03f")
+
 [node name="first_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=1401375657]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
@@ -308,6 +362,90 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("10_pid1a")
 region_rect = Rect2(0.8944092, -1.4426575, 511.98114, 377.3425)
+
+[node name="vertical_functions" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=1390841850]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions" unique_id=214458348]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="functions" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions" unique_id=720549417]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions" unique_id=212398104]
+layout_mode = 2
+
+[node name="vertical_function_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions" unique_id=560908602]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("1_s6oht")
+texture_pressed = ExtResource("2_7jvvv")
+texture_hover = ExtResource("3_l2p7v")
+stretch_mode = 0
+
+[node name="vertical_function_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions/vertical_function_button" unique_id=1916063824]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.0
+offset_right = 20.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_5v03f")
+
+[node name="vertical_frecuency_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions" unique_id=1814879107]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("11_syhsr")
+texture_pressed = ExtResource("12_hlm6f")
+texture_hover = ExtResource("13_hsdkd")
+stretch_mode = 0
+
+[node name="vertical_frecuency_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions/vertical_frecuency_button" unique_id=1607894877]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -11.5
+offset_right = 22.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_f38gy")
+
+[node name="vertical_selector_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions" unique_id=1469311269]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("11_syhsr")
+texture_pressed = ExtResource("12_hlm6f")
+texture_hover = ExtResource("13_hsdkd")
+stretch_mode = 0
+
+[node name="vertical_selector_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions/vertical_selector_button" unique_id=1333326061]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.0
+offset_right = 21.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_75pyk")
 
 [node name="vertical_tanks" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=1353207972]
 unique_name_in_owner = true
@@ -483,6 +621,38 @@ grow_vertical = 2
 texture = ExtResource("12_syhsr")
 region_rect = Rect2(-0.034168243, -0.036088943, 10.96476, 11.234412)
 
+[node name="vertical_pumps" type="VBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container" unique_id=345688591]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pumps" unique_id=578180244]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="pumps" type="HBoxContainer" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pumps" unique_id=1717238052]
+layout_mode = 2
+
+[node name="separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pumps/pumps" unique_id=1606579363]
+layout_mode = 2
+
+[node name="vertical_pump_button" type="TextureButton" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pumps/pumps" unique_id=1127676972]
+custom_minimum_size = Vector2(65, 65)
+layout_mode = 2
+texture_normal = ExtResource("11_syhsr")
+texture_pressed = ExtResource("12_hlm6f")
+texture_hover = ExtResource("13_hsdkd")
+stretch_mode = 0
+
+[node name="vertical_pump_sprite" type="NinePatchRect" parent="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pumps/pumps/vertical_pump_button" unique_id=741131520]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_a7ypr")
+
 [node name="second_separator" type="Control" parent="main_container/VBoxContainer/bottom_container/HBoxContainer" unique_id=906749618]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
@@ -493,9 +663,15 @@ layout_mode = 2
 [connection signal="button_up" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/valve_button" to="." method="_on_valve_button_button_up"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/first_line/meter_button" to="." method="_on_meter_button_pressed"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line/cable_button" to="." method="_on_cable_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line/function_button" to="." method="_on_function_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/left_container/vertical_selectors/second_line/pump_button" to="." method="_on_pump_button_pressed"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pipes/pipes/vertical_pipe_button" to="." method="_on_vertical_pipe_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions/vertical_function_button" to="." method="_on_vertical_function_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions/vertical_frecuency_button" to="." method="_on_vertical_frecuency_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_functions/functions/vertical_selector_button" to="." method="_on_vertical_selector_button_pressed"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_tanks/tanks/vertical_tanks_button" to="." method="_on_vertical_tanks_button_pressed"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_valves/valves/vertical_valve_button" to="." method="_on_vertical_valve_button_pressed"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/vertical_meter_button" to="." method="_on_vertical_meter_button_pressed"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/slave_controller_button" to="." method="_on_slave_controller_button_pressed"]
 [connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_controllers/controllers/master_controller_button" to="." method="_on_master_controller_button_pressed"]
+[connection signal="pressed" from="main_container/VBoxContainer/bottom_container/HBoxContainer/center_container/vertical_pumps/pumps/vertical_pump_button" to="." method="_on_vertical_pump_button_pressed"]

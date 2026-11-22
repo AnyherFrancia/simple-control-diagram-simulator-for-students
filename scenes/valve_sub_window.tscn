@@ -257,6 +257,7 @@ offset_top = 20.0
 offset_right = 486.0
 offset_bottom = 355.0
 size_flags_vertical = 3
+theme_override_constants/separation = 2
 
 [node name="max_capacity" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=1012982828]
 custom_minimum_size = Vector2(0, 30)
@@ -399,6 +400,26 @@ text = "No"
 [node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill" unique_id=596703249]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+
+[node name="ato_button" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=449687880]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/ato_button" unique_id=194564260]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="type_text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/ato_button" unique_id=1354041063]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "Tipo de válvula"
+
+[node name="type_button" type="CheckButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/ato_button" unique_id=158240869]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "ATC"
 
 [node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=443089724]
 texture_filter = 1
@@ -661,7 +682,7 @@ texture_filter = 2
 position = Vector2(-44, 0)
 points = PackedVector2Array(45, 172, 83, 172, 121, 172, 159, 172, 197, 172, 235, 172, 273, 172, 311, 172, 349, 172, 385, 172)
 width = 2.5
-default_color = Color(0.98039216, 0.7294118, 0.25490198, 1)
+default_color = Color(0.31764707, 0.35686275, 0.627451, 1)
 
 [node name="graph_line_door" type="Line2D" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container/background/graph_container" unique_id=419947076]
 unique_name_in_owner = true
@@ -669,7 +690,7 @@ texture_filter = 2
 position = Vector2(-44, 0)
 points = PackedVector2Array(45, 172, 83, 172, 121, 172, 159, 172, 197, 172, 235, 172, 273, 172, 311, 172, 349, 172, 385, 172)
 width = 2.5
-default_color = Color(0.9098039, 0, 0, 1)
+default_color = Color(0.14509805, 0.6509804, 0.8745098, 1)
 
 [node name="x_axis" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container" unique_id=1114426393]
 layout_mode = 2
@@ -781,6 +802,7 @@ autostart = true
 [connection signal="toggled" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill/auto_fill_button" to="." method="_on_auto_fill_button_toggled"]
 [connection signal="toggled" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill/manual_button" to="." method="_on_manual_button_toggled"]
 [connection signal="toggled" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill/fail_button" to="." method="_on_fail_button_toggled"]
+[connection signal="toggled" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/ato_button/type_button" to="." method="_on_type_button_toggled"]
 [connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/alter_buttons_container/alter_buttons/rotate_90_right" to="." method="_on_rotate_90_right_pressed"]
 [connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/alter_buttons_container/alter_buttons/rotate_90_left" to="." method="_on_rotate_90_left_pressed"]
 [connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/alter_buttons_container/alter_buttons/delete_object" to="." method="_on_delete_object_pressed"]

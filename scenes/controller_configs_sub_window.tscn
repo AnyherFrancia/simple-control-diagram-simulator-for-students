@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dhis33esqllvg" path="res://scripts/controller_configs_sub_window.gd" id="1_yrn8q"]
 [ext_resource type="Texture2D" uid="uid://cjs1vnlxik4gw" path="res://graficos/hud/sub_window_button.png" id="2_lhpjw"]
+[ext_resource type="Texture2D" uid="uid://egn5a7013a4i" path="res://graficos/hud/sub_window_button_pressed.png" id="3_yrn8q"]
+[ext_resource type="Texture2D" uid="uid://ji0jfqbqbr4a" path="res://graficos/hud/sub_window_button_hover.png" id="4_nrlrn"]
 [ext_resource type="Texture2D" uid="uid://cukdegdn1mnxe" path="res://graficos/hud/let_see.png" id="5_yg3vp"]
 [ext_resource type="Texture2D" uid="uid://6xatck0so6mv" path="res://graficos/hud/let_see_3.png" id="6_e2p6b"]
 [ext_resource type="Texture2D" uid="uid://cqpo8t3kmeqs0" path="res://scenes/5264495.tres" id="7_41dsi"]
@@ -22,6 +24,41 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h8ln"]
+bg_color = Color(0.105882354, 0.14117648, 0.20784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltvid"]
+bg_color = Color(0.105882354, 0.14117648, 0.20784314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu0m0"]
+bg_color = Color(0.11372549, 0.7137255, 0.5254902, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olwf7"]
+bg_color = Color(0.14509805, 0.6509804, 0.8745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lawq5"]
+bg_color = Color(0.31764707, 0.35686275, 0.627451, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s72j8"]
 bg_color = Color(0.105882354, 0.14117648, 0.20784314, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -117,6 +154,31 @@ custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 mouse_filter = 1
 
+[node name="watch_attributes" type="TextureButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/up_buttons_container/up_buttons" unique_id=2002304458]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+texture_normal = ExtResource("2_lhpjw")
+texture_pressed = ExtResource("3_yrn8q")
+texture_hover = ExtResource("4_nrlrn")
+stretch_mode = 0
+
+[node name="text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/up_buttons_container/up_buttons/watch_attributes" unique_id=1663538352]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -7.0
+offset_right = 32.5
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "Ver Atributos"
+
 [node name="edit_attributes" type="TextureButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/up_buttons_container/up_buttons" unique_id=1676947065]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -163,6 +225,7 @@ size_flags_horizontal = 3
 
 [node name="edit_attributes" type="VBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background" unique_id=1852783608]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -193,7 +256,7 @@ offset_top = 20.0
 offset_right = 486.0
 offset_bottom = 355.0
 size_flags_vertical = 3
-theme_override_constants/separation = 29
+theme_override_constants/separation = 7
 
 [node name="getting_in" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=1235430614]
 custom_minimum_size = Vector2(0, 30)
@@ -207,7 +270,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
-text = "Señal de Salida         "
+text = "Señal de Salida            "
 
 [node name="inflow_edit" type="LineEdit" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_in" unique_id=295062937]
 unique_name_in_owner = true
@@ -232,6 +295,74 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "(de 0 a 100%)"
 
+[node name="getting_out" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=553059392]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_out" unique_id=1788807442]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="outflow_text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_out" unique_id=1283309360]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "Señal de Entrada         "
+
+[node name="outflow_edit" type="LineEdit" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_out" unique_id=63608023]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/clear_button_color = Color(1, 1, 1, 1)
+theme_override_colors/clear_button_color_pressed = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+placeholder_text = "0"
+flat = true
+
+[node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_out" unique_id=1581040160]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="instrucctions" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_out" unique_id=688923392]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "(de 0 a 100%)"
+
+[node name="set_point" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=189847274]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/set_point" unique_id=1400953430]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="set_point_text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/set_point" unique_id=1679179882]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "Set_point          "
+
+[node name="set_point_edit" type="LineEdit" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/set_point" unique_id=1512076910]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/clear_button_color = Color(1, 1, 1, 1)
+theme_override_colors/clear_button_color_pressed = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+placeholder_text = "0"
+flat = true
+
+[node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/set_point" unique_id=124199640]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
 [node name="auto_fill" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container" unique_id=1990794153]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -246,19 +377,19 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "Modo:"
 
-[node name="auto_fill_button" type="CheckButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill" unique_id=1657126852]
+[node name="auto_fill_button" type="CheckButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill" unique_id=418101623]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
-text = "Dir"
+text = "Rev"
 
 [node name="manual" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill" unique_id=843491820]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
-text = "Salida Manual:"
+text = "Manual:"
 
 [node name="manual_button" type="CheckButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill" unique_id=2093548615]
 unique_name_in_owner = true
@@ -362,6 +493,265 @@ texture = ExtResource("9_nvhpn")
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
+[node name="watch_attributes" type="VBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background" unique_id=1250851034]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes" unique_id=1607692252]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="title" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes" unique_id=1766188301]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "
+Atributos"
+
+[node name="midle_container" type="VBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes" unique_id=1178206296]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -35
+
+[node name="center_buttons_container" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container" unique_id=367657908]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="background" type="Panel" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container" unique_id=396689965]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 14.0
+offset_right = 516.0
+offset_bottom = 90.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ltvid")
+
+[node name="max_capacity" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container" unique_id=956201355]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 0
+offset_top = 4.0
+offset_right = 486.0
+offset_bottom = 64.0
+theme_override_constants/separation = 14
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity" unique_id=439063634]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Container" type="MarginContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity" unique_id=658510627]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="background" type="Panel" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container" unique_id=934711342]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vu0m0")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container" unique_id=204149956]
+layout_mode = 2
+
+[node name="set_point_tittle" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container/HBoxContainer" unique_id=1134033734]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "   Set Point"
+
+[node name="set_point_text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container/HBoxContainer" unique_id=1636345200]
+unique_name_in_owner = true
+layout_mode = 2
+text = "        0L seg"
+
+[node name="Container3" type="MarginContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity" unique_id=799292572]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="background" type="Panel" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container3" unique_id=22615532]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_olwf7")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container3" unique_id=1974695714]
+layout_mode = 2
+
+[node name="mode_title" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container3/HBoxContainer" unique_id=913532229]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "   Modo"
+
+[node name="mode_text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container3/HBoxContainer" unique_id=2144920024]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "DIR  "
+
+[node name="Container2" type="MarginContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity" unique_id=1233772620]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+
+[node name="background" type="Panel" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container2" unique_id=751754962]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lawq5")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container2" unique_id=747417853]
+layout_mode = 2
+
+[node name="signal_tittle" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container2/HBoxContainer" unique_id=415154547]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "   Señal (entrada/salida)"
+
+[node name="signal_text" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity/Container2/HBoxContainer" unique_id=1748423811]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "0% - 0%"
+
+[node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/center_buttons_container/max_capacity" unique_id=1338018320]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="graph_container" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container" unique_id=756324092]
+layout_mode = 2
+
+[node name="background" type="Panel" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container" unique_id=1895597086]
+layout_mode = 0
+offset_left = -29.0
+offset_top = -17.0
+offset_right = 516.0
+offset_bottom = 196.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s72j8")
+
+[node name="graph_container" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container" unique_id=429863276]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 486.0
+offset_bottom = 176.0
+size_flags_vertical = 3
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container" unique_id=427882825]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="y_axis" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container" unique_id=867816373]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.39688927, 0.39688927, 0.39688924, 1)
+theme_override_font_sizes/font_size = 7
+text = "Nivel
+"
+
+[node name="background" type="MarginContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container" unique_id=149000218]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="graph_container" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container/background" unique_id=320439221]
+layout_mode = 2
+
+[node name="signal_in" type="Line2D" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container/background/graph_container" unique_id=2006428459]
+unique_name_in_owner = true
+texture_filter = 2
+position = Vector2(-44, 0)
+points = PackedVector2Array(45, 172, 83, 172, 121, 172, 159, 172, 197, 172, 235, 172, 273, 172, 311, 172, 349, 172, 385, 172)
+width = 2.5
+default_color = Color(0.14509805, 0.6509804, 0.8745098, 1)
+
+[node name="signal_out" type="Line2D" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container/background/graph_container" unique_id=1312108712]
+unique_name_in_owner = true
+texture_filter = 2
+position = Vector2(-44, 0)
+points = PackedVector2Array(45, 172, 83, 172, 121, 172, 159, 172, 197, 172, 235, 172, 273, 172, 311, 172, 349, 172, 385, 172)
+width = 2.5
+default_color = Color(0.31764707, 0.35686275, 0.627451, 1)
+
+[node name="x_axis" type="Label" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container" unique_id=525543539]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.39607844, 0.39607844, 0.39607844, 1)
+theme_override_font_sizes/font_size = 7
+text = "Tiempo"
+
+[node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/graph_container/graph_container" unique_id=851849080]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="alter_buttons" type="HBoxContainer" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container" unique_id=405143367]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="separator" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons" unique_id=322907457]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="rotate_90_right" type="TextureButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons" unique_id=1394307536]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_yg3vp")
+texture_pressed = ExtResource("6_e2p6b")
+texture_hover = ExtResource("7_84jj0")
+stretch_mode = 0
+
+[node name="sprite" type="NinePatchRect" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons/rotate_90_right" unique_id=1342107950]
+texture_filter = 1
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+
+[node name="rotate_90_left" type="TextureButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons" unique_id=1888703303]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_yg3vp")
+texture_pressed = ExtResource("6_e2p6b")
+texture_hover = ExtResource("7_84jj0")
+stretch_mode = 0
+
+[node name="sprite" type="NinePatchRect" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons/rotate_90_left" unique_id=1615481464]
+texture_filter = 1
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(-1, -1)
+
+[node name="delete_object" type="TextureButton" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons" unique_id=1025392531]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_yg3vp")
+texture_pressed = ExtResource("6_e2p6b")
+texture_hover = ExtResource("7_84jj0")
+stretch_mode = 0
+
+[node name="sprite" type="NinePatchRect" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons/delete_object" unique_id=386752347]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 22.0
+texture = ExtResource("9_nvhpn")
+
+[node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container/alter_buttons" unique_id=1786679603]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="separator3" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/watch_attributes/midle_container" unique_id=2068053147]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
 [node name="separator2" type="Control" parent="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container" unique_id=1299782873]
 custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
@@ -382,7 +772,11 @@ layout_mode = 2
 wait_time = 0.5
 autostart = true
 
+[connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/up_buttons_container/up_buttons/watch_attributes" to="." method="_on_watch_attributes_pressed"]
+[connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/up_buttons_container/up_buttons/edit_attributes" to="." method="_on_edit_attributes_pressed"]
 [connection signal="text_submitted" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_in/inflow_edit" to="." method="_on_inflow_edit_text_submitted"]
+[connection signal="text_submitted" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/getting_out/outflow_edit" to="." method="_on_outflow_edit_text_submitted"]
+[connection signal="text_submitted" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/set_point/set_point_edit" to="." method="_on_set_point_edit_text_submitted"]
 [connection signal="toggled" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill/auto_fill_button" to="." method="_on_auto_fill_button_toggled"]
 [connection signal="toggled" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/auto_fill/manual_button" to="." method="_on_manual_button_toggled"]
 [connection signal="pressed" from="container_vertical/background/VBoxContainer/container_horizontal/VBoxContainer/content/vertical_container/horizontal_container/background/edit_attributes/container_middle_buttons/midle_container/alter_buttons_container/alter_buttons/rotate_90_right" to="." method="_on_rotate_90_right_pressed"]

@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://c13vy3ayb15bm"]
 
 [ext_resource type="Script" uid="uid://dqmfabpisq7yh" path="res://scripts/hud_up.gd" id="1_06jjx"]
+[ext_resource type="Texture2D" uid="uid://egn5a7013a4i" path="res://graficos/hud/sub_window_button_pressed.png" id="2_f6q6d"]
+[ext_resource type="Texture2D" uid="uid://cjs1vnlxik4gw" path="res://graficos/hud/sub_window_button.png" id="3_tkx0e"]
+[ext_resource type="Texture2D" uid="uid://ji0jfqbqbr4a" path="res://graficos/hud/sub_window_button_hover.png" id="4_2liy7"]
+[ext_resource type="Texture2D" uid="uid://c2ixcyjcr2r0u" path="res://graficos/icons/save-file.png" id="5_05scs"]
+[ext_resource type="Texture2D" uid="uid://cgnqsop2ds1ma" path="res://graficos/icons/file.png" id="6_ipn43"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06jjx"]
 bg_color = Color(0.07450981, 0.08235294, 0.16470589, 1)
@@ -52,6 +57,66 @@ grow_vertical = 2
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
+[node name="save_container" type="MarginContainer" parent="background/horizontal_container" unique_id=652456630]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="save_button" type="TextureButton" parent="background/horizontal_container/save_container" unique_id=484454785]
+layout_mode = 2
+texture_normal = ExtResource("2_f6q6d")
+texture_pressed = ExtResource("3_tkx0e")
+texture_hover = ExtResource("4_2liy7")
+stretch_mode = 0
+
+[node name="save_button_icon" type="NinePatchRect" parent="background/horizontal_container/save_container/save_button" unique_id=146316044]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_05scs")
+
+[node name="separator2" type="Control" parent="background/horizontal_container" unique_id=796676667]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="load_container" type="MarginContainer" parent="background/horizontal_container" unique_id=2125105412]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="load_button" type="TextureButton" parent="background/horizontal_container/load_container" unique_id=2092407526]
+layout_mode = 2
+texture_normal = ExtResource("2_f6q6d")
+texture_pressed = ExtResource("3_tkx0e")
+texture_hover = ExtResource("4_2liy7")
+stretch_mode = 0
+
+[node name="load_button_icon" type="NinePatchRect" parent="background/horizontal_container/load_container/load_button" unique_id=2054830790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ipn43")
+
+[node name="separator3" type="Control" parent="background/horizontal_container" unique_id=2027406710]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
 [node name="position_container" type="MarginContainer" parent="background/horizontal_container" unique_id=1955671653]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
@@ -68,7 +133,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "x.0 , y.0"
 
-[node name="separator2" type="Control" parent="background/horizontal_container" unique_id=796676667]
+[node name="separator4" type="Control" parent="background/horizontal_container" unique_id=922601152]
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
@@ -87,3 +152,6 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Zoom: (0,0)"
+
+[connection signal="pressed" from="background/horizontal_container/save_container/save_button" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="background/horizontal_container/load_container/load_button" to="." method="_on_load_button_pressed"]

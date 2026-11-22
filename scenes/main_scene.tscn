@@ -20,6 +20,7 @@ script = SubResource("GDScript_7ykc4")
 [node name="sub_windows" type="Node" parent="." unique_id=2114868962]
 
 [node name="background" type="ColorRect" parent="." unique_id=714438253]
+visibility_layer = 64
 custom_minimum_size = Vector2(1200, 720)
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +32,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-color = Color(0.105882354, 0.14117648, 0.20784314, 1)
+color = Color(0.730622, 0.72989416, 0.7162879, 1)
 
 [node name="camera" type="Camera2D" parent="." unique_id=724590824]
 position = Vector2(960, 540)

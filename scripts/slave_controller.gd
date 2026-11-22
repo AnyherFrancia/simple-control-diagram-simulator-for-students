@@ -1,85 +1,106 @@
 extends main_class
-var signal_2nd: Node2D
-var signal_3rd: Node2D
-var master_signal: Node2D
-var dir: bool = true
-var set_point: float = 3
+
 func _ready() -> void:
-	type = "controlador_esclavo"
-	flow_status = 0
+	add_to_group("save")
+	main_dictionary['signal_2nd'] = null
+	main_dictionary['signal_3rd'] = null
+	main_dictionary['master_signal'] = null
+	main_dictionary['dir'] = true
+	main_dictionary['set_point'] = 3
+	main_dictionary['window_signal'] = 0.0
+	main_dictionary['type'] = "controlador_esclavo"
+	main_dictionary['flow_status'] = 0
+	main_dictionary['config_window'] = preload("res://scenes/controller_configs_sub_window.tscn")
 
 func _process(delta: float) -> void:
-	if signal_2nd:
-		match dir:
+	$set_point.text = "Set point: "+str(main_dictionary['set_point'])+"L/s"
+	if main_dictionary['dir']:
+		$mode.text = "Modo: Dir"
+	else:
+		$mode.text = "Modo: Rev"
+	if main_dictionary['signal_2nd']:
+		match main_dictionary['dir']:
 			true:
-				$mode.text = 'Mode: Dir'
-				if master_signal:
-					match master_signal.dir:
+				$mode.text = 'Modo: Dir'
+				if main_dictionary['master_signal']:
+					match main_dictionary['master_signal'].main_dictionary['dir']:
 						true:
-							if signal_2nd.flow_status-0.20 > flow_status:
-								flow_status = signal_2nd.flow_status
-							elif signal_3rd and signal_3rd.flow_status-0.20 > flow_status:
-								flow_status = signal_3rd.flow_status
-								$nivel_3.text = level_handler(signal_3rd)
+							if main_dictionary['signal_2nd'].main_dictionary['flow_status']-0.20 > main_dictionary['flow_status']:
+								main_dictionary['flow_status'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']
+							elif main_dictionary['signal_3rd'] and main_dictionary['signal_3rd'].main_dictionary['flow_status']-0.20 > main_dictionary['flow_status']:
+								main_dictionary['flow_status'] = main_dictionary['signal_3rd'].main_dictionary['flow_status']
+								$nivel_3.text = level_handler(main_dictionary['signal_3rd'])
 						false:
-							if signal_2nd:
-								if signal_2nd.getting_in > set_point:
-									flow_status = signal_2nd.flow_status+(signal_2nd.gettin_in-set_point)*0.10
+							if main_dictionary['signal_2nd']:
+								if main_dictionary['signal_2nd'].main_dictionary['getting_in'] > main_dictionary['set_point']:
+									main_dictionary['window_signal'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']
+									main_dictionary['flow_status'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']+(main_dictionary['signal_2nd'].gettin_in-main_dictionary['set_point'])*0.05
 								else:
-									flow_status = signal_2nd.flow_status-(set_point-signal_2nd.getting_in)*0.10
-							elif signal_3rd and signal_3rd.flow_status-0.20 > 1-flow_status:
-								flow_status = signal_3rd.flow_status
-								$nivel_3.text = level_handler(signal_3rd)
-					$nivel_1.text = level_handler(master_signal)
-				elif not master_signal:
-					if signal_2nd and not signal_3rd:
-								if signal_2nd.getting_in > set_point:
-									flow_status = signal_2nd.flow_status+(signal_2nd.getting_in-set_point)*0.10
+									main_dictionary['window_signal'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']
+									main_dictionary['flow_status'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']-(main_dictionary['set_point']-main_dictionary['signal_2nd'].main_dictionary['getting_in'])*0.05
+							elif main_dictionary['signal_3rd'] and main_dictionary['signal_3rd'].main_dictionary['flow_status']-0.20 > 1-main_dictionary['flow_status']:
+								main_dictionary['flow_status'] = main_dictionary['signal_3rd'].main_dictionary['flow_status']
+								$nivel_3.text = level_handler(main_dictionary['signal_3rd'])
+					$nivel_1.text = level_handler(main_dictionary['master_signal'])
+				elif not main_dictionary['master_signal']:
+					if main_dictionary['signal_2nd'] and not main_dictionary['signal_3rd']:
+								if main_dictionary['signal_2nd'].main_dictionary['getting_in'] > main_dictionary['set_point']:
+									main_dictionary['window_signal'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']
+									main_dictionary['flow_status'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']+(main_dictionary['signal_2nd'].main_dictionary['getting_in']-main_dictionary['set_point'])*0.05
 								else:
-									flow_status = signal_2nd.flow_status-(set_point-signal_2nd.getting_in)*0.10
-					elif signal_3rd and signal_3rd.flow_status-0.20 > flow_status:
-						flow_status = signal_3rd.flow_status
-						$nivel_3.text = level_handler(signal_3rd)
+									main_dictionary['window_signal'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']
+									main_dictionary['flow_status'] = main_dictionary['signal_2nd'].main_dictionary['flow_status']-(main_dictionary['set_point']-main_dictionary['signal_2nd'].main_dictionary['getting_in'])*0.05
+					elif main_dictionary['signal_3rd'] and main_dictionary['signal_3rd'].main_dictionary['flow_status']-0.20 > main_dictionary['flow_status']:
+						main_dictionary['flow_status'] = main_dictionary['signal_3rd'].main_dictionary['flow_status']
+						$nivel_3.text = level_handler(main_dictionary['signal_3rd'])
 			false:
-				$mode.text = 'Mode: Rev'
-				if master_signal:
-					match master_signal.dir:
+				$mode.text = 'Modo: Rev'
+				if main_dictionary['master_signal']:
+					match main_dictionary['master_signal'].main_dictionary['dir']:
 						true:
-							if signal_2nd.flow_status-0.20 > flow_status:
-								flow_status = 1-signal_2nd.flow_status
-							elif signal_3rd and signal_3rd.flow_status-0.20 > flow_status:
-								flow_status = 1-signal_3rd.flow_status
-								$nivel_3.text = level_handler(signal_3rd)
+							if main_dictionary['signal_2nd'].main_dictionary['flow_status']-0.20 > main_dictionary['flow_status']:
+								main_dictionary['flow_status'] = 1-main_dictionary['signal_2nd'].main_dictionary['flow_status']
+							elif main_dictionary['signal_3rd'] and main_dictionary['signal_3rd'].main_dictionary['flow_status']-0.20 > main_dictionary['flow_status']:
+								main_dictionary['flow_status'] = 1-main_dictionary['signal_3rd'].main_dictionary['flow_status']
+								$nivel_3.text = level_handler(main_dictionary['signal_3rd'])
 						false:
-							if signal_2nd.flow_status:
-								if signal_2nd.getting_in > set_point:
-									flow_status = 1-signal_2nd.flow_status
+							if main_dictionary['signal_2nd'].main_dictionary['flow_status']:
+								if main_dictionary['signal_2nd'].main_dictionary['getting_in'] > main_dictionary['set_point']:
+									main_dictionary['flow_status'] = 1-main_dictionary['signal_2nd'].main_dictionary['flow_status']
 								else:
-									flow_status = 1-signal_2nd.flow_status
-							elif signal_3rd and signal_3rd.flow_status-0.20 > 1-flow_status:
-								flow_status = 1-signal_3rd.flow_Status
-								$nivel_3.text = level_handler(signal_3rd)
-					$nivel_1.text = level_handler(master_signal)
-				elif not master_signal:
-					if signal_2nd:
-						flow_status = 1-signal_2nd.flow_status
-					elif signal_3rd and signal_3rd.flow_status-0.20 > flow_status:
-						flow_status = 1-signal_3rd.flow_status
-						$nivel_3.text = level_handler(signal_3rd)
+									main_dictionary['flow_status'] = 1-main_dictionary['signal_2nd'].main_dictionary['flow_status']
+							elif main_dictionary['signal_3rd'] and main_dictionary['signal_3rd'].main_dictionary['flow_status']-0.20 > 1-main_dictionary['flow_status']:
+								main_dictionary['flow_status'] = 1-main_dictionary['signal_3rd'].flow_Status
+								$nivel_3.text = level_handler(main_dictionary['signal_3rd'])
+					$nivel_1.text = level_handler(main_dictionary['master_signal'])
+				elif not main_dictionary['master_signal']:
+					if main_dictionary['signal_2nd']:
+						main_dictionary['flow_status'] = 1-main_dictionary['signal_2nd'].main_dictionary['flow_status']
+					elif main_dictionary['signal_3rd'] and main_dictionary['signal_3rd'].main_dictionary['flow_status']-0.20 > main_dictionary['flow_status']:
+						main_dictionary['flow_status'] = 1-main_dictionary['signal_3rd'].main_dictionary['flow_status']
+						$nivel_3.text = level_handler(main_dictionary['signal_3rd'])
 						
-		$nivel_2.text = level_handler(signal_2nd)
-		if flow_status > 1: flow_status = 1
-		if flow_status < 0: flow_status = 0
-	$porcentaje.text = "valvula: "+str(snapped(flow_status,0.01)*100)+"%"
-	if local_selected:
+		$nivel_2.text = level_handler(main_dictionary['signal_2nd'])
+		if main_dictionary['flow_status'] > 1: main_dictionary['flow_status'] = 1
+		if main_dictionary['flow_status'] < 0: main_dictionary['flow_status'] = 0
+	$porcentaje.text = "valvula: "+str(snapped(main_dictionary['flow_status'],0.01)*100)+"%"
+	if main_dictionary['local_selected']:
 		self.position = lerp(global_position, get_global_mouse_position(), 25 * delta)
-	if areas_entered:
-		for area in areas_entered:
-			if not local_selected and conected:
+	if main_dictionary['areas_entered']:
+		for area in main_dictionary['areas_entered']:
+			if not main_dictionary['local_selected'] and main_dictionary['conected']:
 				self.global_position.x = area.global_position.x+1.0
-				self. global_position -= areas_entered[area].position*2
+				self. global_position -= main_dictionary['areas_entered'][area].position*2
 				self.global_position.y = area.global_position.y-28.0
-				conected = false
+				main_dictionary['conected'] = false
 
 func level_handler(nivel: Node2D) -> String:
-	return("{string}: ".format({'string': nivel.type}))+str(snapped(nivel.flow_status,0.01)*100)+'%'
+	return("{string}: ".format({'string': nivel.main_dictionary['type']}))+str(snapped(nivel.main_dictionary['flow_status'],0.01)*100)+'%'
+
+func window_handler():
+	var new_window = global_window.on_new_window()
+	var attributes_window = main_dictionary['config_window'].instantiate() as Control
+	attributes_window.parent = self
+	$/root/main_scene/sub_windows.add_child(new_window)
+	new_window.add_child(attributes_window)
+	
