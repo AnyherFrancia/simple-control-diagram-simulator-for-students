@@ -64,6 +64,9 @@ func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> vo
 		main_dictionary['conected'] = true
 	elif Input.is_action_just_pressed("right_click"):
 		window_handler()
+	elif Input.is_action_just_released("left_click"):
+		main_dictionary['local_selected'] = false
+		Global.selected = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -77,7 +80,35 @@ func window_handler():
 func save_state(data: Dictionary):
 	for argument in main_dictionary:
 		data[argument] = main_dictionary[argument]
-	data['type'] = main_dictionary['type']
+	data['position_y'] = self.position.y
+	data['position_x'] = self.position.x
 
-func load_state():
-	pass
+func load_state(data: Dictionary):
+	for argument in data:
+		match argument:
+			'position_y':
+				self.position.y = float(data[argument])
+			'position_x':
+				self.position.x = float(data[argument])
+			'config_window':
+				pass
+			'parents':
+				pass
+			'areas_entered':
+				pass
+			'areaa_dic':
+				pass
+			'signal_1st':
+				pass
+			'signal_2nd':
+				pass
+			'signal_3rd':
+				pass
+			'sign_cable':
+				pass
+			'master_signal':
+				pass
+			_:
+				main_dictionary[argument] = data[argument]
+		
+	

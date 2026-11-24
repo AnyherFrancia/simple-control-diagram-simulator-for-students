@@ -6,8 +6,23 @@ func _process(_delta: float) -> void:
 
 
 func _on_save_button_pressed() -> void:
-	pass 
+	%save_dialog.visible = true
+	%save_dialog.popup_centered()
 
 
 func _on_load_button_pressed() -> void:
-	pass
+	%load_dialog.visible = true
+	%load_dialog.popup_centered()
+
+
+func _on_save_dialog_file_selected(path: String) -> void:
+	SaveManager.save_file(path+'.json')
+
+
+func _on_load_dialog_file_selected(path: String) -> void:
+	var file := FileAccess.open(path,FileAccess.READ)
+	if file:
+		var content: String = file.get_as_text()
+		var data =  JSON.parse_string(content)
+		if data is Dictionary:
+			SaveManager.load_state(data)

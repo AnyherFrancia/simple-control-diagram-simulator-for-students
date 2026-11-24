@@ -1,7 +1,6 @@
 extends main_class
 
 func _ready() -> void:
-	add_to_group("save")
 	main_dictionary['type'] = "cable"
 	var areaa_dic = main_dictionary['areaa_dic']
 	if areaa_dic['controlador_esclavo'] and areaa_dic['medidor']:

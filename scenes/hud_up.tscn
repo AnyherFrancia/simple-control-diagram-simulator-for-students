@@ -83,6 +83,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_05scs")
 
+[node name="save_dialog" type="FileDialog" parent="background/horizontal_container/save_container/save_button" unique_id=659075893]
+unique_name_in_owner = true
+oversampling_override = 1.0
+
 [node name="separator2" type="Control" parent="background/horizontal_container" unique_id=796676667]
 custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
@@ -112,6 +116,11 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_ipn43")
+
+[node name="load_dialog" type="FileDialog" parent="background/horizontal_container/load_container/load_button" unique_id=1567844693]
+unique_name_in_owner = true
+title = "Open a File"
+file_mode = 0
 
 [node name="separator3" type="Control" parent="background/horizontal_container" unique_id=2027406710]
 custom_minimum_size = Vector2(45, 0)
@@ -154,4 +163,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Zoom: (0,0)"
 
 [connection signal="pressed" from="background/horizontal_container/save_container/save_button" to="." method="_on_save_button_pressed"]
+[connection signal="file_selected" from="background/horizontal_container/save_container/save_button/save_dialog" to="." method="_on_save_dialog_file_selected"]
 [connection signal="pressed" from="background/horizontal_container/load_container/load_button" to="." method="_on_load_button_pressed"]
+[connection signal="file_selected" from="background/horizontal_container/load_container/load_button/load_dialog" to="." method="_on_load_dialog_file_selected"]

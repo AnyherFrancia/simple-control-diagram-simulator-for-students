@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 			main_dictionary['flow_status_1st'] -= snapped(((main_dictionary['max_capacity']+main_dictionary['flow_status_1st'])/main_dictionary['max_capacity'])*delta*main_dictionary['flow_status'],0.01)
 	if main_dictionary['parents']:
 		for parent in main_dictionary['parents']:
-			match parent.type:
+			match parent.main_dictionary['type']:
 				'source':
 					if not main_dictionary['sourcing']:
 						main_dictionary['areaa_dic']['source'] = parent

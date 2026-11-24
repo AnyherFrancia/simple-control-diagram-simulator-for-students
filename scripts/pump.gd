@@ -1,8 +1,8 @@
 extends main_class
 func _ready() -> void:
+	add_to_group("save")
 	main_dictionary['sign_cable'] = null
 	main_dictionary['rpm'] = 0.0
-	add_to_group("save")
 	main_dictionary['type'] = "bomba"
 	main_dictionary['unit'] = "R"
 	main_dictionary['max_capacity'] = 50

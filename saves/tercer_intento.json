@@ -1,0 +1,150 @@
+{
+	"@Area2D@287:<Area2D#201662139955>": {
+		"areaa_dic": {
+			"bomba": null,
+			"cable": null,
+			"cable_transmision": null,
+			"controlador_esclavo": null,
+			"controlador_maestro": null,
+			"convertidor": null,
+			"funcion": null,
+			"medidor": "@Area2D@288:<Area2D#231726911036>",
+			"selector": null,
+			"source": null,
+			"tuberia": null,
+			"valvula": null
+		},
+		"areas_entered": {
+			"down:<CollisionShape2D#231760465485>": "center:<CollisionShape2D#201746026036>"
+		},
+		"auto_fill": false,
+		"conected": false,
+		"config_window": "(res://scenes/configs_sub_window.tscn):<PackedScene#-9223371995666708987>",
+		"fail_state": false,
+		"flow_status": 0.0,
+		"getting_in": 1.5,
+		"local_selected": false,
+		"manual": false,
+		"max_capacity": 10,
+		"max_flow": 2,
+		"parents": {
+			"@Area2D@288:<Area2D#231726911036>": "center:<CollisionShape2D#201746026036>"
+		},
+		"position_x": 1292.15002441406,
+		"position_y": 542.763854980469,
+		"sourcing": false,
+		"type": "tuberia",
+		"unit": "F"
+	},
+	"@Area2D@288:<Area2D#231726911036>": {
+		"areaa_dic": {
+			"bomba": null,
+			"cable": null,
+			"cable_transmision": null,
+			"controlador_esclavo": null,
+			"controlador_maestro": null,
+			"convertidor": null,
+			"funcion": null,
+			"medidor": null,
+			"selector": null,
+			"source": null,
+			"tuberia": null,
+			"valvula": null
+		},
+		"areas_entered": {
+			"center:<CollisionShape2D#201746026036>": "down:<CollisionShape2D#231760465485>"
+		},
+		"auto_fill": false,
+		"conected": false,
+		"config_window": "<GDScriptNativeClass#-9223372014591409359>",
+		"fail_state": false,
+		"flow_status": 0.75,
+		"getting_in": 1.5,
+		"local_selected": false,
+		"manual": false,
+		"max_capacity": 0.0,
+		"max_flow": 2,
+		"parents": {
+			"@Area2D@287:<Area2D#201662139955>": "down:<CollisionShape2D#231760465485>"
+		},
+		"position_x": 1292.15002441406,
+		"position_y": 512.763854980469,
+		"sourcing": false,
+		"type": "medidor",
+		"unit": "F"
+	},
+	"meter:<Area2D#218238029371>": {
+		"areaa_dic": {
+			"bomba": null,
+			"cable": null,
+			"cable_transmision": null,
+			"controlador_esclavo": null,
+			"controlador_maestro": null,
+			"convertidor": null,
+			"funcion": null,
+			"medidor": null,
+			"selector": null,
+			"source": null,
+			"tuberia": null,
+			"valvula": null
+		},
+		"areas_entered": {
+			"center:<CollisionShape2D#191226711634>": "down:<CollisionShape2D#218271583813>"
+		},
+		"auto_fill": false,
+		"conected": false,
+		"config_window": "<GDScriptNativeClass#-9223372014591409359>",
+		"fail_state": false,
+		"flow_status": 0.125,
+		"getting_in": 0.25,
+		"local_selected": false,
+		"manual": false,
+		"max_capacity": 0.0,
+		"max_flow": 2,
+		"parents": {
+			"pipe:<Area2D#191142825520>": "down:<CollisionShape2D#218271583813>"
+		},
+		"position_x": 1064.685546875,
+		"position_y": 547.534912109375,
+		"sourcing": false,
+		"type": "medidor",
+		"unit": "F"
+	},
+	"pipe:<Area2D#191142825520>": {
+		"areaa_dic": {
+			"bomba": null,
+			"cable": null,
+			"cable_transmision": null,
+			"controlador_esclavo": null,
+			"controlador_maestro": null,
+			"convertidor": null,
+			"funcion": null,
+			"medidor": "meter:<Area2D#218238029371>",
+			"selector": null,
+			"source": null,
+			"tuberia": null,
+			"valvula": null
+		},
+		"areas_entered": {
+			"down:<CollisionShape2D#218271583813>": "center:<CollisionShape2D#191226711634>"
+		},
+		"auto_fill": false,
+		"conected": false,
+		"config_window": "(res://scenes/configs_sub_window.tscn):<PackedScene#-9223371995666708987>",
+		"fail_state": false,
+		"flow_status": 0.0,
+		"getting_in": 0.25,
+		"local_selected": false,
+		"manual": false,
+		"max_capacity": 10,
+		"max_flow": 2,
+		"parents": {
+			"meter:<Area2D#218238029371>": "center:<CollisionShape2D#191226711634>"
+		},
+		"position_x": 1064.685546875,
+		"position_y": 577.534912109375,
+		"sourcing": false,
+		"type": "tuberia",
+		"unit": "F"
+	}
+}
